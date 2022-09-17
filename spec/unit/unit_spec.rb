@@ -1,31 +1,56 @@
 require 'rails_helper'
 
-RSpec.describe Book, type: :model do
+RSpec.describe User, type: :model do
   subject do
-    described_class.new(title: 'Harry Potter', author: 'JK Rowling', price: 19.99, published_date: '2020-09-28')
+    described_class.new(first_name: 'Jonas',
+                        last_name: 'Stites',
+                        street_address: '711 University Dr',
+                        street_address_line_two: '1122',
+                        city: 'College Station',
+                        state: 'TX',
+                        zip_code: 77840,
+                        phone_number: '5123324558',
+                        is_admin: false,
+                        is_committee_leader: true)
   end
 
   it 'is valid with all valid attributes' do
     expect(subject).to be_valid
   end
 
-  it 'is not valid without a title' do
-    subject.title = nil
+  it 'is not valid without a first name' do
+    subject.first_name = nil
     expect(subject).not_to be_valid
   end
 
-  it 'is not valid without a author' do
-    subject.author = nil
+  it 'is not valid without a last name' do
+    subject.last_name = nil
     expect(subject).not_to be_valid
   end
 
-  it 'is not valid without a price' do
-    subject.price = nil
+  it 'is not valid without a street address' do
+    subject.street_address = nil
     expect(subject).not_to be_valid
   end
 
-  it 'is not valid without a published_date' do
-    subject.published_date = nil
+  it 'is not valid without a city' do
+    subject.city = nil
     expect(subject).not_to be_valid
   end
+
+  it 'is not valid without a state' do
+    subject.state = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without a zip code' do
+    subject.zip_code = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without a phone number' do
+    subject.phone_number = nil
+    expect(subject).not_to be_valid
+  end
+
 end
