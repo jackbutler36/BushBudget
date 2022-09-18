@@ -52,5 +52,4 @@ RSpec.describe User, type: :model do
     subject.phone_number = nil
     expect(subject).not_to be_valid
   end
-
 end
