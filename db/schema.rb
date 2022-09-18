@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 2022_09_17_204231) do
     t.string "street_address_line_two"
     t.string "city"
     t.string "state"
-    t.integer "zip_code"
+    t.string "zip_code"
     t.string "phone_number"
-    t.boolean "is_admin"
-    t.boolean "is_committee_leader"
+    t.string "is_admin"
+    t.string "is_committee_leader"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

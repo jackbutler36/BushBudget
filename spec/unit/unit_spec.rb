@@ -8,10 +8,10 @@ RSpec.describe User, type: :model do
                         street_address_line_two: '1122',
                         city: 'College Station',
                         state: 'TX',
-                        zip_code: 77840,
-                        phone_number: '5123324558',
-                        is_admin: false,
-                        is_committee_leader: true)
+                        zip_code: '77840',
+                        phone_number: '(512)332-4558',
+                        is_admin: 'no',
+                        is_committee_leader: 'yes')
   end
 
   it 'is valid with all valid attributes' do

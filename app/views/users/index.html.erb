@@ -7,32 +7,32 @@
   <%= f.label :first_name_start %>
   <%= f.search_field :first_name_start %>
 
-  <%= f.label :last_name %>
-  <%= f.search_field :last_name %>
+  <%= f.label :last_name_start %>
+  <%= f.search_field :last_name_start %>
 
-  <%= f.label :street_address %>
-  <%= f.search_field :street_address %>
+  <%= f.label :street_address_cont %>
+  <%= f.search_field :street_address_cont %>
 
-  <%= f.label :street_address_line_two %>
-  <%= f.search_field :street_address_line_two %>
+  <%= f.label :street_address_line_two_cont %>
+  <%= f.search_field :street_address_line_two_cont %>
 
-  <%= f.label :city %>
-  <%= f.search_field :city %>
+  <%= f.label :city_cont %>
+  <%= f.search_field :city_cont %>
 
-  <%= f.label :state %>
-  <%= f.search_field :state %>
+  <%= f.label :state_cont %>
+  <%= f.search_field :state_cont %>
 
-  <%= f.label :zip_code %>
-  <%= f.search_field :zip_code %>
+  <%= f.label :zip_code_cont %>
+  <%= f.search_field :zip_code_cont %>
 
-  <%= f.label :phone_number %>
-  <%= f.search_field :phone_number %>
+  <%= f.label :phone_number_cont %>
+  <%= f.search_field :phone_number_cont %>
 
-  <%= f.label :is_admin %>
-  <%= f.search_field :is_admin %>
+  <%= f.label :is_admin_cont %>
+  <%= f.select :is_admin_cont, ['', 'yes', 'no'] %>
 
-  <%= f.label :is_committee_leader %>
-  <%= f.search_field :is_committee_leader %>
+  <%= f.label :is_committee_leader_cont  %>
+  <%= f.select :is_committee_leader_cont, ['', 'yes', 'no']  %>
 
   <%= f.submit %>
 <% end %>

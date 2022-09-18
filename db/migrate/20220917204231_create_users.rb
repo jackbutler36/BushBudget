@@ -7,10 +7,10 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :street_address_line_two
       t.string :city
       t.string :state
-      t.integer :zip_code
+      t.string :zip_code
       t.string :phone_number
-      t.boolean :is_admin
-      t.boolean :is_committee_leader
+      t.string :is_admin
+      t.string :is_committee_leader
 
       t.timestamps
     end
