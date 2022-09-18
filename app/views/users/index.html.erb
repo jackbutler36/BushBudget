@@ -2,6 +2,41 @@
 
 <h1>Users</h1>
 
+<%= search_form_for @q do |f| %>
+
+  <%= f.label :first_name_start %>
+  <%= f.search_field :first_name_start %>
+
+  <%= f.label :last_name %>
+  <%= f.search_field :last_name %>
+
+  <%= f.label :street_address %>
+  <%= f.search_field :street_address %>
+
+  <%= f.label :street_address_line_two %>
+  <%= f.search_field :street_address_line_two %>
+
+  <%= f.label :city %>
+  <%= f.search_field :city %>
+
+  <%= f.label :state %>
+  <%= f.search_field :state %>
+
+  <%= f.label :zip_code %>
+  <%= f.search_field :zip_code %>
+
+  <%= f.label :phone_number %>
+  <%= f.search_field :phone_number %>
+
+  <%= f.label :is_admin %>
+  <%= f.search_field :is_admin %>
+
+  <%= f.label :is_committee_leader %>
+  <%= f.search_field :is_committee_leader %>
+
+  <%= f.submit %>
+<% end %>
+
 <table>
   <thead>
     <tr>

@@ -488,10 +488,12 @@
       },
       "/csce431/app/controllers/users_controller.rb": {
         "lines": [
+          null,
           1,
           1,
           null,
           null,
+          1,
           1,
           1,
           null,
@@ -566,6 +568,6 @@
         ]
       }
     },
-    "timestamp": 1663455312
+    "timestamp": 1663468762
   }
 }
