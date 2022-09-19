@@ -466,7 +466,6 @@
           1,
           1,
           null,
-          null,
           null
         ]
       },
@@ -488,7 +487,6 @@
       },
       "/csce431/app/controllers/users_controller.rb": {
         "lines": [
-          null,
           1,
           1,
           null,
@@ -502,14 +500,12 @@
           1,
           null,
           null,
-          null,
           1,
           1,
           null,
           null,
           null,
           1,
-          null,
           null,
           null,
           1,
@@ -550,6 +546,7 @@
           null,
           1,
           null,
+          null,
           1,
           1,
           null,
@@ -557,6 +554,7 @@
           null,
           1,
           1,
+          null,
           null,
           null
         ]
@@ -568,6 +566,6 @@
         ]
       }
     },
-    "timestamp": 1663479399
+    "timestamp": 1663543485
   }
 }

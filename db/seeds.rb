@@ -7,7 +7,6 @@ require 'faker'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
 # Faker is a gem for generating random data that helps perform integration testing
 25.times do
   User.create(
