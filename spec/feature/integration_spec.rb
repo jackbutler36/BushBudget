@@ -1,22 +1,31 @@
 require 'rails_helper'
 
 # Example
-RSpec.describe 'Creating a book', type: :feature do
+RSpec.describe 'Creating a user', type: :feature do
   scenario 'valid inputs' do
-    visit new_book_path
-    fill_in 'Title', with: 'harry potter'
-    fill_in 'Author', with: 'JK Rowling'
-    fill_in 'Price', with: 19.99
-    fill_in 'Published date', with: '2020-09-28'
-    # if you use date_select in the form for book:
-    # select '2020' :from => 'book_published_date_1i'
-    # select '9' :from => 'book_published_date_2i'
-    # select '28' :from => 'book_published_date_3i'
-    click_on 'Create Book'
-    visit books_path
-    expect(page).to have_content('harry potter')
-    expect(page).to have_content('JK Rowling')
-    expect(page).to have_content('19.99')
-    expect(page).to have_content('2020-09-28')
+    visit new_user_path
+    fill_in 'First name', with: 'Jonas'
+    fill_in 'Last name', with: 'Stites'
+    fill_in 'Street address', with: '711 University Dr'
+    fill_in 'Street address line two', with: '1122'
+    fill_in 'City', with: 'College Station'
+    select 'TX', from: 'State'
+    fill_in 'Zip code', with: '77840'
+    fill_in 'Phone number', with: '(512)774-9949'
+    select 'no', from: 'Is admin'
+    select 'yes', from: 'Is committee leader'
+    click_on 'Create User'
+
+    visit users_path
+    expect(page).to have_content('Jonas')
+    expect(page).to have_content('Stites')
+    expect(page).to have_content('711 University Dr')
+    expect(page).to have_content('1122')
+    expect(page).to have_content('College Station')
+    expect(page).to have_content('TX')
+    expect(page).to have_content('77840')
+    expect(page).to have_content('(512)774-9949')
+    expect(page).to have_content('no')
+    expect(page).to have_content('yes')
   end
 end
