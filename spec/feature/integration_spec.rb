@@ -2,18 +2,21 @@ require 'rails_helper'
 
 # Example
 RSpec.describe 'Creating a user', type: :feature do
-  scenario 'valid inputs' do
-    visit new_user_path
+  def set_defaults # setting parameters without validation for integration testing
     fill_in 'First name', with: 'Jonas'
     fill_in 'Last name', with: 'Stites'
     fill_in 'Street address', with: '711 University Dr'
     fill_in 'Street address line two', with: '1122'
     fill_in 'City', with: 'College Station'
     select 'TX', from: 'State'
-    fill_in 'Zip code', with: '77840'
-    fill_in 'Phone number', with: '(512)774-9949'
     select 'no', from: 'Is admin'
     select 'yes', from: 'Is committee leader'
+  end
+  scenario 'valid inputs' do
+    visit new_user_path
+    set_defaults
+    fill_in 'Zip code', with: '77840'
+    fill_in 'Phone number', with: '(512)774-9949'
     click_on 'Create User'
 
     visit users_path

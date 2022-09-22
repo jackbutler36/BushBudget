@@ -33,6 +33,11 @@ RSpec.describe User, type: :model do
     expect(subject).not_to be_valid
   end
 
+  it 'is valid without a street address two' do
+    subject.street_address_line_two = nil
+    expect(subject).to be_valid
+  end
+
   it 'is not valid without a city' do
     subject.city = nil
     expect(subject).not_to be_valid
@@ -43,8 +48,33 @@ RSpec.describe User, type: :model do
     expect(subject).not_to be_valid
   end
 
+  it 'zip code must be 5 digits' do
+    subject.zip_code = '778404'
+    expect(subject).not_to be_valid
+  end
+
+  it 'zip code must be all numbers' do
+    subject.zip_code = '77a40'
+    expect(subject).not_to be_valid
+  end
+
   it 'is not valid without a zip code' do
     subject.zip_code = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid with an out of range area code' do
+    subject.phone_number = '(199)332-4558'
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without a dash' do
+    subject.phone_number = '(199)3324558'
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without a parenthesis' do
+    subject.phone_number = '(199332-4558'
     expect(subject).not_to be_valid
   end
 
@@ -52,4 +82,5 @@ RSpec.describe User, type: :model do
     subject.phone_number = nil
     expect(subject).not_to be_valid
   end
+
 end
