@@ -10,8 +10,9 @@ RSpec.describe User, type: :model do
                         state: 'TX',
                         zip_code: '77840',
                         phone_number: '(512)332-4558',
-                        is_admin: 'no',
-                        is_committee_leader: 'yes')
+                        uin: '123456789',
+                        position: 'member',
+                        committee: 'R&D')
   end
 
   it 'is valid with all valid attributes' do
@@ -80,6 +81,36 @@ RSpec.describe User, type: :model do
 
   it 'is not valid without a phone number' do
     subject.phone_number = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'must be 9 digits' do
+    subject.uin = '1234567890'
+    expect(subject).not_to be_valid
+  end
+
+  it 'must contain only integers' do
+    subject.uin = '12345b789'
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without a uin' do
+    subject.uin = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'must be either leader or member' do
+    subject.position = 'admin'
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without a position' do
+    subject.position = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without a committee' do
+    subject.committee = nil
     expect(subject).not_to be_valid
   end
 

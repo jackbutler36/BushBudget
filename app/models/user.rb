@@ -11,8 +11,9 @@ class User < ApplicationRecord
       errors.add(:phone_number, 'area code must be between 200-999')
     end
   end
-  validates :first_name, :last_name, :street_address, :city, :state, presence: true
+  validates :first_name, :last_name, :street_address, :city, :state, :committee, presence: true
   validates :zip_code, length: { is: 5 }, numericality: {only_integer: true}, presence: true
+  validates :uin, length: { is: 9 }, numericality: {only_integer: true}, presence: true
   validate :validate_phone_number
-  validates :is_admin, :is_committee_leader, inclusion: {in: %w(yes no), message: 'only allows yes or no'}, presence: true
+  validates :position, inclusion: {in: %w(leader member), message: 'only allows leader or member'}, presence: true
 end
