@@ -10,8 +10,9 @@ RSpec.describe User, type: :model do
                         state: 'TX',
                         zip_code: '77840',
                         phone_number: '(512)332-4558',
-                        is_admin: 'no',
-                        is_committee_leader: 'yes')
+                        uin: '123456789',
+                        position: 'member',
+                        committee: 'R&D')
   end
 
   it 'is valid with all valid attributes' do
@@ -33,6 +34,11 @@ RSpec.describe User, type: :model do
     expect(subject).not_to be_valid
   end
 
+  it 'is valid without a street address two' do
+    subject.street_address_line_two = nil
+    expect(subject).to be_valid
+  end
+
   it 'is not valid without a city' do
     subject.city = nil
     expect(subject).not_to be_valid
@@ -43,8 +49,33 @@ RSpec.describe User, type: :model do
     expect(subject).not_to be_valid
   end
 
+  it 'zip code must be 5 digits' do
+    subject.zip_code = '778404'
+    expect(subject).not_to be_valid
+  end
+
+  it 'zip code must be all numbers' do
+    subject.zip_code = '77a40'
+    expect(subject).not_to be_valid
+  end
+
   it 'is not valid without a zip code' do
     subject.zip_code = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid with an out of range area code' do
+    subject.phone_number = '(199)332-4558'
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without a dash' do
+    subject.phone_number = '(199)3324558'
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without a parenthesis' do
+    subject.phone_number = '(199332-4558'
     expect(subject).not_to be_valid
   end
 
@@ -52,4 +83,35 @@ RSpec.describe User, type: :model do
     subject.phone_number = nil
     expect(subject).not_to be_valid
   end
+
+  it 'must be 9 digits' do
+    subject.uin = '1234567890'
+    expect(subject).not_to be_valid
+  end
+
+  it 'must contain only integers' do
+    subject.uin = '12345b789'
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without a uin' do
+    subject.uin = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'must be either leader or member' do
+    subject.position = 'admin'
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without a position' do
+    subject.position = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without a committee' do
+    subject.committee = nil
+    expect(subject).not_to be_valid
+  end
+
 end

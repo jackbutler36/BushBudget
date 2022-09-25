@@ -9,8 +9,9 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :state
       t.string :zip_code
       t.string :phone_number
-      t.string :is_admin
-      t.string :is_committee_leader
+      t.string :uin
+      t.string :position
+      t.string :committee
 
       t.timestamps
     end

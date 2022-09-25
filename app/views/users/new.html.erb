@@ -1,5 +1,7 @@
+<% if current_admin %>
 <h1>New User</h1>
-
 <%= render 'form', user: @user %>
-
 <%= link_to 'Back', users_path %>
+<% else %>
+<%= button_to 'Login', new_admin_session_path %>
+<% end %>

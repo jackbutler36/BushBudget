@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<% if current_admin %>
 <p>
   <strong>First name:</strong>
   <%= @user.first_name %>
@@ -41,14 +42,22 @@
 </p>
 
 <p>
-  <strong>Is admin:</strong>
-  <%= @user.is_admin %>
+  <strong>UIN:</strong>
+  <%= @user.uin %>
 </p>
 
 <p>
-  <strong>Is committee leader:</strong>
-  <%= @user.is_committee_leader %>
+  <strong>Position:</strong>
+  <%= @user.position %>
+</p>
+
+<p>
+  <strong>Committee:</strong>
+  <%= @user.committee %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+<% else %>
+<%= button_to 'Login', new_admin_session_path %>
+<% end %>
