@@ -115,3 +115,29 @@ RSpec.describe User, type: :model do
   end
 
 end
+
+RSpec.describe Meeting, type: :model do
+  subject do
+    described_class.new(description: 'Meeting about R&D',
+                        date: Date.new(12,1,2022))
+  end
+
+  it 'is valid with all valid attributes' do
+    expect(subject).to be_valid
+  end
+
+  it 'cannot have a date before today' do
+    subject.date = Date.new(6,1,2022)
+    expect(subject).not_to be_valid
+  end
+
+  it 'date cannot be null' do
+    subject.date = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'description cannot be null' do
+    subject.description = nil
+    expect(subject).not_to be_valid
+  end
+end
