@@ -119,7 +119,7 @@ end
 RSpec.describe Meeting, type: :model do
   subject do
     described_class.new(description: 'Meeting about R&D',
-                        date: Date.new(12,1,2022))
+                        date: Date.new(2022,12,1))
   end
 
   it 'is valid with all valid attributes' do
@@ -127,7 +127,7 @@ RSpec.describe Meeting, type: :model do
   end
 
   it 'cannot have a date before today' do
-    subject.date = Date.new(6,1,2022)
+    subject.date = Date.new(2022,6,1)
     expect(subject).not_to be_valid
   end
 

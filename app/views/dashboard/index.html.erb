@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+<% if current_admin %>
+<h1>Admin Dashboard</h1>
+<%= link_to 'Users', 'users#index' %>
+<%= link_to 'Meetings', 'meetings#index' %>
+<%= button_to 'Logout', destroy_admin_session_path, data: {turbo: 'false'}, method: :delete %>
+<% else %>
+<%= button_to 'Login', new_admin_session_path %>
+<% end %>

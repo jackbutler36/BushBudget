@@ -16,7 +16,7 @@ RSpec.describe 'Creating a user', type: :feature do
 
   def set_defaults_meeting
     fill_in 'Description', with: 'Meeting about R&D'
-    fill_in 'Date', with: Date.new(12,1,2022)
+    fill_in 'Date', with: Date.new(2022,12,1)
   end
 
   def new_admin(email, password) # creates new admin account for testing
@@ -35,8 +35,10 @@ RSpec.describe 'Creating a user', type: :feature do
 
   scenario 'valid inputs' do # trying to sign in and create user with corrects credentials
     new_admin('tamubushtest@gmail.com', 'bushboys512')
-    visit new_user_path
+    visit new_admin_session_path
     admin_login('tamubushtest@gmail.com', 'bushboys512')
+    click_on 'Users'
+    click_on 'New User'
     set_defaults
     fill_in 'Zip code', with: '77840'
     fill_in 'Phone number', with: '(512)774-9949'
@@ -58,27 +60,29 @@ RSpec.describe 'Creating a user', type: :feature do
 
   scenario 'invalid inputs' do # trying to sign in and create user with incorrect credentials
     new_admin('tamubushtest@gmail.com', 'bushboys512')
-    visit new_user_path
+    visit new_admin_session_path
     admin_login('tamubushtest@gmail.com', 'bushboys')
-    expect(page).to have_no_button 'Create User'
+    expect(page).to have_no_button 'New User'
   end
 
   scenario 'meeting with valid credentials' do # creating a meeting with valid admin credentials 
     new_admin('tamubushtest@gmail.com', 'bushboys512')
-    visit new_meeting_path
-    admin_login('tamubushtest@gmail.com', 'bushboys')
-    visit set_defaults_meeting
+    visit new_admin_session_path
+    admin_login('tamubushtest@gmail.com', 'bushboys512')
+    click_on 'Meetings'
+    click_on 'New Meeting'
+    set_defaults_meeting
     click_on 'Create Meeting'
     visit meetings_path
     
     expect(page).to have_content('Meeting about R&D')
-    expect(page).to have_content(Date.new(12,1,2022))
+    expect(page).to have_content(Date.new(2022,12,1))
   end
 
   scenario 'meeting with invalid credentials' do # creating a meeting with invalid admin credentials 
     new_admin('tamubushtest@gmail.com', 'bushboys512')
-    visit new_meeting_path
+    visit new_admin_session_path
     admin_login('tamubushtest@gmail.com', 'bushboys')
-    expect(page).to have_no_button 'Create Meeting'
+    expect(page).to have_no_button 'New Meeting'
   end
 end

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
+  resources :meetings
   resources :users
-  root 'users#index'
+  root 'dashboard#index'
   devise_for :admins, controllers: {
     registrations: 'admins/registrations',
     sessions: 'admins/sessions'
