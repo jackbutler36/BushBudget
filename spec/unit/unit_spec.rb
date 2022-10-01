@@ -119,7 +119,8 @@ end
 RSpec.describe Meeting, type: :model do
   subject do
     described_class.new(description: 'Meeting about R&D',
-                        date: Date.new(2022,12,1))
+                        date: Date.new(2022,12,1),
+                        password: 'goodpassword')
   end
 
   it 'is valid with all valid attributes' do
@@ -138,6 +139,11 @@ RSpec.describe Meeting, type: :model do
 
   it 'description cannot be null' do
     subject.description = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'password cannot be null' do
+    subject.password = nil
     expect(subject).not_to be_valid
   end
 end
