@@ -17,6 +17,7 @@ RSpec.describe 'Creating a user', type: :feature do
   def set_defaults_meeting
     fill_in 'Description', with: 'Meeting about R&D'
     fill_in 'Date', with: Date.new(2022,12,1)
+    fill_in 'Password', with: 'goodpassword'
   end
 
   def new_admin(email, password) # creates new admin account for testing
@@ -77,6 +78,7 @@ RSpec.describe 'Creating a user', type: :feature do
     
     expect(page).to have_content('Meeting about R&D')
     expect(page).to have_content(Date.new(2022,12,1))
+    expect(page).to have_content("goodpassword")
   end
 
   scenario 'meeting with invalid credentials' do # creating a meeting with invalid admin credentials 

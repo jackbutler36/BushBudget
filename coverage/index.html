@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-09-27T00:24:06+00:00">2022-09-27T00:24:06+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-10-01T20:31:08+00:00">2022-10-01T20:31:08+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  91.89%
+  92.04%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.28
+         1.29
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>333</b> relevant lines,
-    <span class="green"><b>306</b> lines covered</span> and
+    <b>339</b> relevant lines,
+    <span class="green"><b>312</b> lines covered</span> and
     <span class="red"><b>27</b> lines missed. </span>
     (<span class="green">
-  91.89%
+  92.04%
 </span>
 )
   </div>
@@ -205,11 +205,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#111cd39ac4cca218415eae72378da5d25cce57ed" class="src_link" title="app/models/meeting.rb">app/models/meeting.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">14</td>
-            <td class="cell--number">9</td>
-            <td class="cell--number">9</td>
+            <td class="cell--number">15</td>
+            <td class="cell--number">10</td>
+            <td class="cell--number">10</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.78</td>
+            <td class="cell--number">1.90</td>
             
           </tr>
         
@@ -403,11 +403,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#ad413e7377fad941eac6a8e38baa086ffa8891f9" class="src_link" title="spec/feature/integration_spec.rb">spec/feature/integration_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">88</td>
-            <td class="cell--number">68</td>
-            <td class="cell--number">68</td>
+            <td class="cell--number">90</td>
+            <td class="cell--number">70</td>
+            <td class="cell--number">70</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.35</td>
+            <td class="cell--number">1.34</td>
             
           </tr>
         
@@ -425,9 +425,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#2d3d02109a277b0b2b0c1e426dea62b31fec82bd" class="src_link" title="spec/unit/unit_spec.rb">spec/unit/unit_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">143</td>
-            <td class="cell--number">77</td>
-            <td class="cell--number">77</td>
+            <td class="cell--number">149</td>
+            <td class="cell--number">80</td>
+            <td class="cell--number">80</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.29</td>
             
@@ -1753,7 +1753,7 @@
 
             
 
-            <code class="ruby">      params.require(:meeting).permit(:description, :date)</code>
+            <code class="ruby">      params.require(:meeting).permit(:description, :date, :password)</code>
           </li>
         </div>
       
@@ -3014,8 +3014,8 @@
     
 
     <div class="t-line-summary">
-      <b>9</b> relevant lines.
-      <span class="green"><b>9</b> lines covered</span> and
+      <b>10</b> relevant lines.
+      <span class="green"><b>10</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -3049,8 +3049,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="3">
-            <span class="hits">5</span>
+          <li class="covered" data-hits="6" data-linenumber="3">
+            <span class="hits">6</span>
             
 
             
@@ -3093,13 +3093,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="7">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="5" data-linenumber="7">
+            <span class="hits">5</span>
             
 
             
 
-            <code class="ruby">        if date &lt;= Date.today</code>
+            <code class="ruby">        if date &lt; Date.today</code>
           </li>
         </div>
       
@@ -3170,7 +3170,18 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="14">
+          <li class="covered" data-hits="1" data-linenumber="14">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    validates :password, presence: true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="15">
             
             
 
@@ -9952,8 +9963,8 @@
     
 
     <div class="t-line-summary">
-      <b>68</b> relevant lines.
-      <span class="green"><b>68</b> lines covered</span> and
+      <b>70</b> relevant lines.
+      <span class="green"><b>70</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -10174,13 +10185,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="20">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="20">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    fill_in &#39;Password&#39;, with: &#39;goodpassword&#39;</code>
           </li>
         </div>
       
@@ -10191,12 +10202,23 @@
 
             
 
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="22">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="22">
+          <li class="covered" data-hits="1" data-linenumber="23">
             <span class="hits">1</span>
             
 
@@ -10207,7 +10229,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="23">
+          <li class="covered" data-hits="4" data-linenumber="24">
             <span class="hits">4</span>
             
 
@@ -10218,7 +10240,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="24">
+          <li class="covered" data-hits="4" data-linenumber="25">
             <span class="hits">4</span>
             
 
@@ -10229,7 +10251,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="25">
+          <li class="covered" data-hits="4" data-linenumber="26">
             <span class="hits">4</span>
             
 
@@ -10240,7 +10262,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="26">
+          <li class="covered" data-hits="4" data-linenumber="27">
             <span class="hits">4</span>
             
 
@@ -10251,7 +10273,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="27">
+          <li class="covered" data-hits="4" data-linenumber="28">
             <span class="hits">4</span>
             
 
@@ -10262,7 +10284,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="28">
+          <li class="never" data-hits="" data-linenumber="29">
             
             
 
@@ -10273,7 +10295,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="29">
+          <li class="never" data-hits="" data-linenumber="30">
             
             
 
@@ -10284,7 +10306,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="30">
+          <li class="covered" data-hits="1" data-linenumber="31">
             <span class="hits">1</span>
             
 
@@ -10295,7 +10317,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="31">
+          <li class="covered" data-hits="4" data-linenumber="32">
             <span class="hits">4</span>
             
 
@@ -10306,7 +10328,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="32">
+          <li class="covered" data-hits="4" data-linenumber="33">
             <span class="hits">4</span>
             
 
@@ -10317,7 +10339,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="33">
+          <li class="covered" data-hits="4" data-linenumber="34">
             <span class="hits">4</span>
             
 
@@ -10328,7 +10350,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="34">
+          <li class="never" data-hits="" data-linenumber="35">
             
             
 
@@ -10339,24 +10361,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="35">
+          <li class="never" data-hits="" data-linenumber="36">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="36">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  scenario &#39;valid inputs&#39; do # trying to sign in and create user with corrects credentials</code>
           </li>
         </div>
       
@@ -10367,7 +10378,7 @@
 
             
 
-            <code class="ruby">    new_admin(&#39;tamubushtest@gmail.com&#39;, &#39;bushboys512&#39;)</code>
+            <code class="ruby">  scenario &#39;valid inputs&#39; do # trying to sign in and create user with corrects credentials</code>
           </li>
         </div>
       
@@ -10378,7 +10389,7 @@
 
             
 
-            <code class="ruby">    visit new_admin_session_path</code>
+            <code class="ruby">    new_admin(&#39;tamubushtest@gmail.com&#39;, &#39;bushboys512&#39;)</code>
           </li>
         </div>
       
@@ -10389,7 +10400,7 @@
 
             
 
-            <code class="ruby">    admin_login(&#39;tamubushtest@gmail.com&#39;, &#39;bushboys512&#39;)</code>
+            <code class="ruby">    visit new_admin_session_path</code>
           </li>
         </div>
       
@@ -10400,7 +10411,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Users&#39;</code>
+            <code class="ruby">    admin_login(&#39;tamubushtest@gmail.com&#39;, &#39;bushboys512&#39;)</code>
           </li>
         </div>
       
@@ -10411,7 +10422,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;New User&#39;</code>
+            <code class="ruby">    click_on &#39;Users&#39;</code>
           </li>
         </div>
       
@@ -10422,7 +10433,7 @@
 
             
 
-            <code class="ruby">    set_defaults</code>
+            <code class="ruby">    click_on &#39;New User&#39;</code>
           </li>
         </div>
       
@@ -10433,7 +10444,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;Zip code&#39;, with: &#39;77840&#39;</code>
+            <code class="ruby">    set_defaults</code>
           </li>
         </div>
       
@@ -10444,7 +10455,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;Phone number&#39;, with: &#39;(512)774-9949&#39;</code>
+            <code class="ruby">    fill_in &#39;Zip code&#39;, with: &#39;77840&#39;</code>
           </li>
         </div>
       
@@ -10455,29 +10466,29 @@
 
             
 
+            <code class="ruby">    fill_in &#39;Phone number&#39;, with: &#39;(512)774-9949&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="46">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">    click_on &#39;Create User&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="46">
+          <li class="never" data-hits="" data-linenumber="47">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="47">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    visit users_path</code>
           </li>
         </div>
       
@@ -10488,7 +10499,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Jonas&#39;)</code>
+            <code class="ruby">    visit users_path</code>
           </li>
         </div>
       
@@ -10499,7 +10510,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Stites&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Jonas&#39;)</code>
           </li>
         </div>
       
@@ -10510,7 +10521,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;711 University Dr&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Stites&#39;)</code>
           </li>
         </div>
       
@@ -10521,7 +10532,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;1122&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;711 University Dr&#39;)</code>
           </li>
         </div>
       
@@ -10532,7 +10543,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;College Station&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;1122&#39;)</code>
           </li>
         </div>
       
@@ -10543,7 +10554,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;TX&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;College Station&#39;)</code>
           </li>
         </div>
       
@@ -10554,7 +10565,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;77840&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;TX&#39;)</code>
           </li>
         </div>
       
@@ -10565,7 +10576,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;(512)774-9949&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;77840&#39;)</code>
           </li>
         </div>
       
@@ -10576,7 +10587,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;123456789&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;(512)774-9949&#39;)</code>
           </li>
         </div>
       
@@ -10587,7 +10598,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;member&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;123456789&#39;)</code>
           </li>
         </div>
       
@@ -10598,18 +10609,18 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;R&amp;D&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;member&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="59">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="59">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;R&amp;D&#39;)</code>
           </li>
         </div>
       
@@ -10620,18 +10631,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="61">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="61">
+            
             
 
             
 
-            <code class="ruby">  scenario &#39;invalid inputs&#39; do # trying to sign in and create user with incorrect credentials</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -10642,7 +10653,7 @@
 
             
 
-            <code class="ruby">    new_admin(&#39;tamubushtest@gmail.com&#39;, &#39;bushboys512&#39;)</code>
+            <code class="ruby">  scenario &#39;invalid inputs&#39; do # trying to sign in and create user with incorrect credentials</code>
           </li>
         </div>
       
@@ -10653,7 +10664,7 @@
 
             
 
-            <code class="ruby">    visit new_admin_session_path</code>
+            <code class="ruby">    new_admin(&#39;tamubushtest@gmail.com&#39;, &#39;bushboys512&#39;)</code>
           </li>
         </div>
       
@@ -10664,7 +10675,7 @@
 
             
 
-            <code class="ruby">    admin_login(&#39;tamubushtest@gmail.com&#39;, &#39;bushboys&#39;)</code>
+            <code class="ruby">    visit new_admin_session_path</code>
           </li>
         </div>
       
@@ -10675,18 +10686,18 @@
 
             
 
-            <code class="ruby">    expect(page).to have_no_button &#39;New User&#39;</code>
+            <code class="ruby">    admin_login(&#39;tamubushtest@gmail.com&#39;, &#39;bushboys&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="66">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="66">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    expect(page).to have_no_button &#39;New User&#39;</code>
           </li>
         </div>
       
@@ -10697,18 +10708,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="68">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="68">
+            
             
 
             
 
-            <code class="ruby">  scenario &#39;meeting with valid credentials&#39; do # creating a meeting with valid admin credentials </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -10719,7 +10730,7 @@
 
             
 
-            <code class="ruby">    new_admin(&#39;tamubushtest@gmail.com&#39;, &#39;bushboys512&#39;)</code>
+            <code class="ruby">  scenario &#39;meeting with valid credentials&#39; do # creating a meeting with valid admin credentials </code>
           </li>
         </div>
       
@@ -10730,7 +10741,7 @@
 
             
 
-            <code class="ruby">    visit new_admin_session_path</code>
+            <code class="ruby">    new_admin(&#39;tamubushtest@gmail.com&#39;, &#39;bushboys512&#39;)</code>
           </li>
         </div>
       
@@ -10741,7 +10752,7 @@
 
             
 
-            <code class="ruby">    admin_login(&#39;tamubushtest@gmail.com&#39;, &#39;bushboys512&#39;)</code>
+            <code class="ruby">    visit new_admin_session_path</code>
           </li>
         </div>
       
@@ -10752,7 +10763,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Meetings&#39;</code>
+            <code class="ruby">    admin_login(&#39;tamubushtest@gmail.com&#39;, &#39;bushboys512&#39;)</code>
           </li>
         </div>
       
@@ -10763,7 +10774,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;New Meeting&#39;</code>
+            <code class="ruby">    click_on &#39;Meetings&#39;</code>
           </li>
         </div>
       
@@ -10774,7 +10785,7 @@
 
             
 
-            <code class="ruby">    set_defaults_meeting</code>
+            <code class="ruby">    click_on &#39;New Meeting&#39;</code>
           </li>
         </div>
       
@@ -10785,7 +10796,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create Meeting&#39;</code>
+            <code class="ruby">    set_defaults_meeting</code>
           </li>
         </div>
       
@@ -10796,12 +10807,23 @@
 
             
 
+            <code class="ruby">    click_on &#39;Create Meeting&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="77">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">    visit meetings_path</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="77">
+          <li class="never" data-hits="" data-linenumber="78">
             
             
 
@@ -10812,7 +10834,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="78">
+          <li class="covered" data-hits="1" data-linenumber="79">
             <span class="hits">1</span>
             
 
@@ -10823,7 +10845,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="79">
+          <li class="covered" data-hits="1" data-linenumber="80">
             <span class="hits">1</span>
             
 
@@ -10834,7 +10856,18 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="80">
+          <li class="covered" data-hits="1" data-linenumber="81">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&quot;goodpassword&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="82">
             
             
 
@@ -10845,7 +10878,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="81">
+          <li class="never" data-hits="" data-linenumber="83">
             
             
 
@@ -10856,7 +10889,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="82">
+          <li class="covered" data-hits="1" data-linenumber="84">
             <span class="hits">1</span>
             
 
@@ -10867,7 +10900,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="83">
+          <li class="covered" data-hits="1" data-linenumber="85">
             <span class="hits">1</span>
             
 
@@ -10878,7 +10911,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="84">
+          <li class="covered" data-hits="1" data-linenumber="86">
             <span class="hits">1</span>
             
 
@@ -10889,7 +10922,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="85">
+          <li class="covered" data-hits="1" data-linenumber="87">
             <span class="hits">1</span>
             
 
@@ -10900,7 +10933,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="86">
+          <li class="covered" data-hits="1" data-linenumber="88">
             <span class="hits">1</span>
             
 
@@ -10911,7 +10944,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="87">
+          <li class="never" data-hits="" data-linenumber="89">
             
             
 
@@ -10922,7 +10955,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="88">
+          <li class="never" data-hits="" data-linenumber="90">
             
             
 
@@ -11686,8 +11719,8 @@
     
 
     <div class="t-line-summary">
-      <b>77</b> relevant lines.
-      <span class="green"><b>77</b> lines covered</span> and
+      <b>80</b> relevant lines.
+      <span class="green"><b>80</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -13019,8 +13052,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="121">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="5" data-linenumber="121">
+            <span class="hits">5</span>
             
 
             
@@ -13036,7 +13069,7 @@
 
             
 
-            <code class="ruby">                        date: Date.new(2022,12,1))</code>
+            <code class="ruby">                        date: Date.new(2022,12,1),</code>
           </li>
         </div>
       
@@ -13047,7 +13080,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">                        password: &#39;goodpassword&#39;)</code>
           </li>
         </div>
       
@@ -13058,18 +13091,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="125">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="125">
+            
             
 
             
 
-            <code class="ruby">  it &#39;is valid with all valid attributes&#39; do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -13080,18 +13113,18 @@
 
             
 
-            <code class="ruby">    expect(subject).to be_valid</code>
+            <code class="ruby">  it &#39;is valid with all valid attributes&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="127">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="127">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    expect(subject).to be_valid</code>
           </li>
         </div>
       
@@ -13102,18 +13135,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="129">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="129">
+            
             
 
             
 
-            <code class="ruby">  it &#39;cannot have a date before today&#39; do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -13124,7 +13157,7 @@
 
             
 
-            <code class="ruby">    subject.date = Date.new(2022,6,1)</code>
+            <code class="ruby">  it &#39;cannot have a date before today&#39; do</code>
           </li>
         </div>
       
@@ -13135,18 +13168,18 @@
 
             
 
-            <code class="ruby">    expect(subject).not_to be_valid</code>
+            <code class="ruby">    subject.date = Date.new(2022,6,1)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="132">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="132">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    expect(subject).not_to be_valid</code>
           </li>
         </div>
       
@@ -13157,18 +13190,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="134">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="134">
+            
             
 
             
 
-            <code class="ruby">  it &#39;date cannot be null&#39; do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -13179,7 +13212,7 @@
 
             
 
-            <code class="ruby">    subject.date = nil</code>
+            <code class="ruby">  it &#39;date cannot be null&#39; do</code>
           </li>
         </div>
       
@@ -13190,18 +13223,18 @@
 
             
 
-            <code class="ruby">    expect(subject).not_to be_valid</code>
+            <code class="ruby">    subject.date = nil</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="137">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="137">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    expect(subject).not_to be_valid</code>
           </li>
         </div>
       
@@ -13212,18 +13245,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="139">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="139">
+            
             
 
             
 
-            <code class="ruby">  it &#39;description cannot be null&#39; do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -13234,7 +13267,7 @@
 
             
 
-            <code class="ruby">    subject.description = nil</code>
+            <code class="ruby">  it &#39;description cannot be null&#39; do</code>
           </li>
         </div>
       
@@ -13245,12 +13278,23 @@
 
             
 
+            <code class="ruby">    subject.description = nil</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="142">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">    expect(subject).not_to be_valid</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="142">
+          <li class="never" data-hits="" data-linenumber="143">
             
             
 
@@ -13261,7 +13305,62 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="143">
+          <li class="never" data-hits="" data-linenumber="144">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="145">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  it &#39;password cannot be null&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="146">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    subject.password = nil</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="147">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(subject).not_to be_valid</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="148">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="149">
             
             
 

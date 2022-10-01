@@ -10,5 +10,10 @@
   <%= @meeting.date %>
 </p>
 
+<p>
+  <strong>Password:</strong>
+  <%= @meeting.password %>
+</p>
+
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
 <%= link_to 'Back', meetings_path %>

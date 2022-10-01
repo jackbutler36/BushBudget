@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2022_09_26_232110) do
   create_table "meetings", force: :cascade do |t|
     t.string "description"
     t.date "date"
+    t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
