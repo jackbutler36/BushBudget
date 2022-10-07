@@ -4,8 +4,8 @@
 
 <table>
   <thead>
-      <th>Firstname</th>
-      <th>Description</th>
+      <th>UIN</th>
+      <th>Meeting Password</th>
       <th rowspan="2"></th>
     </tr>
   </thead>
@@ -13,8 +13,8 @@
   <tbody>
     <% @attendances.each do |attendance| %>
       <tr>
-        <td><%= @user_first%></td>
-        <td><%= @meet_desc%></td>
+        <td><%= attendance.userNum%></td>
+        <td><%= attendance.password%></td>
         <td><%= link_to 'Show', attendance %></td>
         <td><%= link_to 'Edit', edit_attendance_path(attendance) %></td>
         <td><%= link_to 'Destroy', attendance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
