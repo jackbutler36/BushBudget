@@ -12,8 +12,12 @@ class Attendance < ApplicationRecord
 
     def validate_UIN
         if(userNum == nil)
-            error.add(:userNum, 'UIN cannot be blank')
+            errors.add(:userNum, 'UIN cannot be blank')
+        end    
+        if(!User.where(uin: self.userNum).last)
+            errors.add(:userNum, 'UIN not found')
         end
+
     end
 
     validate :validate_UIN
