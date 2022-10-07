@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'dashboard/index'
+  resources :attendances
   resources :meetings
   resources :users
   root 'dashboard#index'
