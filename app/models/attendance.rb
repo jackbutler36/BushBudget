@@ -14,6 +14,12 @@ class Attendance < ApplicationRecord
         if(userNum == nil)
             errors.add(:userNum, 'UIN cannot be blank')
         end    
+        if(userNum.size < 9)
+            errors.add(:userNum, 'UIN too short')
+        end
+        if(userNum.size > 9)
+            errors.add(:userNum, 'UIN too long')
+        end
         if(!User.where(uin: self.userNum).last)
             errors.add(:userNum, 'UIN not found')
         end
