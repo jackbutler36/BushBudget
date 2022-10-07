@@ -20,6 +20,9 @@ class Attendance < ApplicationRecord
         if(userNum.size > 9)
             errors.add(:userNum, 'UIN too long')
         end
+        if(!Attendance.where(userNum: :userNum, password: :password).last)
+            errors.add(:userNum, 'UIN already entered in this meeting')
+        end
         if(!User.where(uin: self.userNum).last)
             errors.add(:userNum, 'UIN not found')
         end
