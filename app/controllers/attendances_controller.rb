@@ -26,13 +26,16 @@ class AttendancesController < ApplicationController
     @attendance = Attendance.new(attendance_params)
 
     respond_to do |format|
-      if @attendance.save
-        format.html { redirect_to attendance_url(@attendance), notice: "Attendance was successfully created." }
-        format.json { render :show, status: :created, location: @attendance }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @attendance.errors, status: :unprocessable_entity }
-      end
+      
+        if @attendance.save
+          format.html { redirect_to attendance_url(@attendance), notice: "Attendance was successfully created." }
+          format.json { render :show, status: :created, location: @attendance }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @attendance.errors, status: :unprocessable_entity }
+        end
+       
+    
     end
   end
 
@@ -67,6 +70,6 @@ class AttendancesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def attendance_params
-      params.permit(:userNum, :password)
+      params.require(:attendance).permit(:userNum, :password)
     end
 end

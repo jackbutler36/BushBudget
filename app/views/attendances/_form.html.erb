@@ -1,10 +1,10 @@
 <%= form_with(model: @attendance) do |form| %>
   <% if @attendance.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
+      <h2><%= pluralize(@attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
 
       <ul>
-        <% attendance.errors.each do |error| %>
+        <% @attendance.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :UIN, "UIN" %>
+    <%= form.label :UIN %>
     <%= form.text_field :userNum %>
   </div>
 
