@@ -6,7 +6,11 @@
 <%= button_to 'Logout', destroy_admin_session_path, data: {turbo: 'false'}, method: :delete %>
 <% else %>
 <% if current_user %>
-<h1>User Dashboard</h1>
+<h1>Howdy <%= current_user.first_name %></h1>
+<% if @meetings.length - @user_attendance.length >= 2 %>
+<h2 id="warning">WARNING: you have missed <%= @meetings.length - @user_attendance.length%> meetings. View your attendance history for more details</h2>
+<% end %>
+<%= link_to 'Attendance History', 'attendances#index' %>
 <%= button_to 'Logout', destroy_user_session_path, data: {turbo: 'false'}, method: :delete %>
 <% else %>
 <%= button_to 'Login as Admin', new_admin_session_path %>

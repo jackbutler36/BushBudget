@@ -130,7 +130,6 @@ RSpec.describe 'Running integration tests', type: :feature do
     new_meeting(Date.new(2022,12,1), 'pass456')
     new_meeting(Date.new(2022,12,4), 'pass789')
     visit new_attendance_path
-    print page.body
     fill_in 'attendance[userNum]', with: '111222333'
     fill_in 'Password', with: 'pass1234'
     click_on 'Create Attendance'
@@ -146,13 +145,12 @@ RSpec.describe 'Running integration tests', type: :feature do
     new_meeting(Date.new(2022,12,1), 'pass456')
     new_meeting(Date.new(2022,12,4), 'pass789')
     new_meeting(Date.new(2022,12,7), 'pass012')
-    visit new_attendance_path
-    print page.body
-    fill_in 'attendance[userNum]', with: '111222333'
-    fill_in 'Password', with: 'pass1234'
-    click_on 'Create Attendance'
+    new_attendance('111222333', 'pass456')
     visit new_user_session_path
     login('bushtest@gmail.com', 'pass1234')
-    expect(page).to have_content('WARNING: You have been absent from 2 meeting. See you Attendance History')
+    expect(page).to have_content('WARNING: you have missed 2 meetings. View your attendance history for more details')
+    new_attendance('111222333', 'pass789')
+    visit new_user_session_path
+    expect(page).to have_no_content('WARNING: you have missed 2 meetings. View your attendance history for more details')
   end
 end
