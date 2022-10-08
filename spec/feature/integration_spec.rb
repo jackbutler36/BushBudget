@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 # Example
-RSpec.describe 'Creating a user', type: :feature do
+RSpec.describe 'Running integration tests', type: :feature do
   def set_defaults # setting parameters without validation for integration testing
     fill_in 'First name', with: 'Jonas'
     fill_in 'Last name', with: 'Stites'
@@ -12,12 +12,23 @@ RSpec.describe 'Creating a user', type: :feature do
     fill_in 'Uin', with: '123456789'
     select 'member', from: 'Position'
     fill_in 'Committee', with: 'R&D'
+    fill_in 'Email', with: 'bushtest@gmail.com'
+    fill_in 'Password', with: 'pass1234'
+    fill_in 'Password confirmation', with: 'pass1234'
   end
 
   def set_defaults_meeting
     fill_in 'Description', with: 'Meeting about R&D'
     fill_in 'Date', with: Date.new(2022,12,1)
     fill_in 'Password', with: 'goodpassword'
+  end
+
+  def new_meeting(date, password)
+    meeting = Meeting.new
+    meeting.date = Date.new(2022,12,1)
+    meeting.description = 'testing meeting functionality'
+    meeting.password = password
+    meeting.save!
   end
 
   def new_admin(email, password) # creates new admin account for testing
@@ -28,7 +39,33 @@ RSpec.describe 'Creating a user', type: :feature do
     admin.save!
   end
 
-  def admin_login(email, password)
+  def new_attendance(uin, password)
+    attendance = Attendance.new
+    attendance.userNum = uin
+    attendance.password = password
+    attendance.save!
+  end
+
+  def new_user(email, password) # creates new admin account for testing
+    user = User.new
+    user.first_name =  'Test'
+    user.last_name =  'User'
+    user.street_address = '711 uni dr'
+    user.street_address_line_two = '1320'
+    user.city = 'College Station'
+    user.state = 'TX'
+    user.zip_code = '77840'
+    user.phone_number = '(222)333-4444'
+    user.uin = '111222333'
+    user.position = 'member'
+    user.committee = 'R&D'
+    user.email =  email
+    user.password = password
+    user.password_confirmation = password
+    user.save!
+  end
+
+  def login(email, password)
     fill_in 'Email', with: email
     fill_in 'Password', with: password
     click_on 'Log in'
@@ -37,7 +74,7 @@ RSpec.describe 'Creating a user', type: :feature do
   scenario 'valid inputs' do # trying to sign in and create user with corrects credentials
     new_admin('tamubushtest@gmail.com', 'bushboys512')
     visit new_admin_session_path
-    admin_login('tamubushtest@gmail.com', 'bushboys512')
+    login('tamubushtest@gmail.com', 'bushboys512')
     click_on 'Users'
     click_on 'New User'
     set_defaults
@@ -62,14 +99,14 @@ RSpec.describe 'Creating a user', type: :feature do
   scenario 'invalid inputs' do # trying to sign in and create user with incorrect credentials
     new_admin('tamubushtest@gmail.com', 'bushboys512')
     visit new_admin_session_path
-    admin_login('tamubushtest@gmail.com', 'bushboys')
+    login('tamubushtest@gmail.com', 'bushboys')
     expect(page).to have_no_button 'New User'
   end
 
   scenario 'meeting with valid credentials' do # creating a meeting with valid admin credentials 
     new_admin('tamubushtest@gmail.com', 'bushboys512')
     visit new_admin_session_path
-    admin_login('tamubushtest@gmail.com', 'bushboys512')
+    login('tamubushtest@gmail.com', 'bushboys512')
     click_on 'Meetings'
     click_on 'New Meeting'
     set_defaults_meeting
@@ -84,7 +121,38 @@ RSpec.describe 'Creating a user', type: :feature do
   scenario 'meeting with invalid credentials' do # creating a meeting with invalid admin credentials 
     new_admin('tamubushtest@gmail.com', 'bushboys512')
     visit new_admin_session_path
-    admin_login('tamubushtest@gmail.com', 'bushboys')
+    login('tamubushtest@gmail.com', 'bushboys')
     expect(page).to have_no_button 'New Meeting'
+  end
+
+  scenario 'attendance with valid credentials' do
+    new_user('bushtest@gmail.com', 'pass1234')
+    new_meeting(Date.new(2022,12,1), 'pass456')
+    new_meeting(Date.new(2022,12,4), 'pass789')
+    visit new_attendance_path
+    print page.body
+    fill_in 'attendance[userNum]', with: '111222333'
+    fill_in 'Password', with: 'pass1234'
+    click_on 'Create Attendance'
+    visit new_user_session_path
+    login('bushtest@gmail.com', 'pass1234')
+    click_on 'Attendance History'
+    expect(page).to have_content(Date.new(2022,12,1))
+    expect(page).to have_no_content(Date.new(2022,12,4))
+  end
+
+  scenario 'user attendance warning notification' do
+    new_user('bushtest@gmail.com', 'pass1234')
+    new_meeting(Date.new(2022,12,1), 'pass456')
+    new_meeting(Date.new(2022,12,4), 'pass789')
+    new_meeting(Date.new(2022,12,7), 'pass012')
+    visit new_attendance_path
+    print page.body
+    fill_in 'attendance[userNum]', with: '111222333'
+    fill_in 'Password', with: 'pass1234'
+    click_on 'Create Attendance'
+    visit new_user_session_path
+    login('bushtest@gmail.com', 'pass1234')
+    expect(page).to have_content('WARNING: You have been absent from 2 meeting. See you Attendance History')
   end
 end

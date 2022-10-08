@@ -31,6 +31,7 @@
 <%= link_to 'New Meeting', new_meeting_path %>
 <%= button_to 'Logout', destroy_admin_session_path, data: {turbo: 'false'}, method: :delete %>
 <% else %>
-<%= button_to 'Login', new_admin_session_path %>
+<%= button_to 'Login as Admin', new_admin_session_path %>
+<%= button_to 'Login as User', new_user_session_path %>
 <% end %>
 

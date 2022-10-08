@@ -13,6 +13,7 @@ class Attendance < ApplicationRecord
     def validate_UIN
         if(userNum == nil)
             errors.add(:userNum, 'UIN cannot be blank')
+            return
         end    
         if(userNum.size < 9)
             errors.add(:userNum, 'UIN too short')
@@ -20,7 +21,7 @@ class Attendance < ApplicationRecord
         if(userNum.size > 9)
             errors.add(:userNum, 'UIN too long')
         end
-        if(!Attendance.where(userNum: :userNum, password: :password).last)
+        if(!Attendance.where(userNum: self.userNum, password: self.password))
             errors.add(:userNum, 'UIN already entered in this meeting')
         end
         if(!User.where(uin: self.userNum).last)
