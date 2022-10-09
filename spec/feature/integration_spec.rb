@@ -140,7 +140,7 @@ RSpec.describe 'Running integration tests', type: :feature do
     expect(page).to have_no_content(Date.new(2022,12,4))
   end
 
-  scenario 'user attendance warning notification' do
+  scenario 'user attendance warning notification' do # creating a used who has 2 missing attendance records and then reducing it to only one
     new_user('bushtest@gmail.com', 'pass1234')
     new_meeting(Date.new(2022,12,1), 'pass456')
     new_meeting(Date.new(2022,12,4), 'pass789')
@@ -152,5 +152,55 @@ RSpec.describe 'Running integration tests', type: :feature do
     new_attendance('111222333', 'pass789')
     visit new_user_session_path
     expect(page).to have_no_content('WARNING: you have missed 2 meetings. View your attendance history for more details')
+  end
+
+  scenario 'admin attendance warning notification' do # creating a used who has 3 missing attendance records and then reducing it to only two
+    new_admin('tamubushtest@gmail.com', 'bushboys512')
+    new_user('bushtest@gmail.com', 'pass1234')
+    new_meeting(Date.new(2022,12,1), 'pass456')
+    new_meeting(Date.new(2022,12,4), 'pass789')
+    new_meeting(Date.new(2022,12,7), 'pass012')
+    #new_attendance('111222333', 'pass456')
+    visit new_admin_session_path
+    login('tamubushtest@gmail.com', 'bushboys512')
+    expect(page).to have_content('There are 1 members who\'ve missed 3+ meetings.')
+    new_attendance('111222333', 'pass789')
+    visit new_admin_session_path
+    expect(page).to have_no_content('There are 1 members who\'ve missed 3+ meetings.')
+  end
+
+  scenario 'admin viewing attendance of new meeting' do # creating a new meeting and expecting no attendees yet
+    new_admin('tamubushtest@gmail.com', 'bushboys512')
+    new_user('bushtest@gmail.com', 'pass1234')
+    new_user('bushtest2@gmail.com', 'pass12345')
+    new_user('bushtest3@gmail.com', 'pass12346')
+    new_user('bushtest4@gmail.com', 'pass12347')
+    new_meeting(Date.new(2022,12,1), 'pass456')
+    #new_attendance('111222333', 'pass456')
+    visit new_admin_session_path
+    login('tamubushtest@gmail.com', 'bushboys512')
+    click_on 'Meetings'
+    click_on 'View Attendees'
+    expect(page).to have_no_content('YES')
+    new_attendance('111222333', 'pass456')
+    click_on 'Back'
+    click_on 'View Attendees'
+    expect(page).to have_content('YES')
+  end
+
+  scenario 'admin viewing attendance of new user' do # creating a new user and expecting no attendances yet
+    new_admin('tamubushtest@gmail.com', 'bushboys512')
+    new_user('bushtest@gmail.com', 'pass1234')
+    new_meeting(Date.new(2022,12,1), 'pass456')
+    #new_attendance('111222333', 'pass456')
+    visit new_admin_session_path
+    login('tamubushtest@gmail.com', 'bushboys512')
+    click_on 'Users'
+    click_on 'View Profile and Attendance History'
+    expect(page).to have_no_content('YES')
+    new_attendance('111222333', 'pass456')
+    click_on 'Back'
+    click_on 'View Profile and Attendance History'
+    expect(page).to have_content('YES')
   end
 end

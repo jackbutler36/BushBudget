@@ -5,7 +5,10 @@ class AttendancesController < ApplicationController
   def index
     @attendances = Attendance.all
     @meetings = Meeting.all
-    @user_attendance = Attendance.where(userNum: current_user.uin)
+    @users = User.all
+    if current_user
+      @user_attendance = Attendance.where(userNum: current_user.uin)
+    end
     @user_first = User.where(uin: @attendances.pluck(:userNum)).first 
     @meet_desc = Meeting.where(password: @attendances.pluck(:password)).first
   end
