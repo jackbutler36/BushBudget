@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users 
   resources :attendances
   resources :meetings
-  resources :users
+  resources :users 
   root 'dashboard#index'
   devise_for :admins, controllers: {
     registrations: 'admins/registrations',

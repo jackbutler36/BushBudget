@@ -4,6 +4,8 @@ class AttendancesController < ApplicationController
   # GET /attendances or /attendances.json
   def index
     @attendances = Attendance.all
+    @meetings = Meeting.all
+    @user_attendance = Attendance.where(userNum: current_user.uin)
     @user_first = User.where(uin: @attendances.pluck(:userNum)).first 
     @meet_desc = Meeting.where(password: @attendances.pluck(:password)).first
   end

@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :rememberable, :validatable
   def validate_phone_number # custom validation method for phone number
     if phone_number == nil
       errors.add(:phone_number, 'phone number cannot be empty')

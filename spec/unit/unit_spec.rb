@@ -12,7 +12,10 @@ RSpec.describe User, type: :model do
                         phone_number: '(512)332-4558',
                         uin: '123456789',
                         position: 'member',
-                        committee: 'R&D')
+                        committee: 'R&D',
+                        email: 'bushtest@gmail.com',
+                        password: 'pass1234',
+                        password_confirmation: 'pass1234')
   end
 
   it 'is valid with all valid attributes' do
@@ -146,4 +149,52 @@ RSpec.describe Meeting, type: :model do
     subject.password = nil
     expect(subject).not_to be_valid
   end
+end
+
+RSpec.describe Attendance, type: :model do
+  
+  subject do
+    User.new(first_name: 'Jonas',
+                        last_name: 'Stites',
+                        street_address: '711 University Dr',
+                        street_address_line_two: '1122',
+                        city: 'College Station',
+                        state: 'TX',
+                        zip_code: '77840',
+                        phone_number: '(512)332-4558',
+                        uin: '123456789',
+                        position: 'member',
+                        committee: 'R&D',
+                        email: 'bushtest@gmail.com',
+                        password: 'pass1234',
+                        password_confirmation: 'pass1234')
+
+    Meeting.new(description: 'Meeting about R&D',
+                        date: Date.new(2022,12,1),
+                        password: 'goodpassword')
+
+    described_class.new(userNum: '123456789',
+                        password: 'goodpassword')
+  end
+
+  it 'uin needs to exist' do
+    subject.userNum = '000000000'
+    expect(subject).not_to be_valid
+  end
+
+  it 'password needs to exist' do
+    subject.password = '000000000'
+    expect(subject).not_to be_valid
+  end
+
+  it 'uin cant be null' do
+    subject.userNum = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'password cant be null' do
+    subject.password = nil
+    expect(subject).not_to be_valid
+  end
+
 end

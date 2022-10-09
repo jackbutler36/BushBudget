@@ -4,5 +4,6 @@
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>
 <% else %>
-<%= button_to 'Login', new_admin_session_path %>
+<%= button_to 'Login as Admin', new_admin_session_path %>
+<%= button_to 'Login as User', new_user_session_path %>
 <% end %>
