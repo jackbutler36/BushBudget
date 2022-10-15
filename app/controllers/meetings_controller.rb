@@ -61,6 +61,8 @@ class MeetingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_meeting
       @meeting = Meeting.find(params[:id])
+      @users = User.all
+      @attendances = Attendance.where(password: @meeting.password)
     end
 
     # Only allow a list of trusted parameters through.

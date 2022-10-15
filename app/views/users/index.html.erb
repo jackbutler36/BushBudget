@@ -53,32 +53,55 @@
       <th>UIN</th>
       <th>Position</th>
       <th>Committee</th>
+      <th>Excusal Date</th>
+      <th>Absences</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
+      <% absences = 0 %>
+      <% @meetings.each do |meeting| %>
+        <% attended = false %>
+        <% (Attendance.where(userNum: user.uin)).each do |attendance| %>
+          <% if meeting.password == attendance.password %>
+            <% attended = true %>
+          <% end%>
+          </tr>
+        <% end %>
+        <% if !attended && user.excusal_date < meeting.date %>
+          <% absences = absences + 1 %>
+        <% end %>
+      <% end %>
       <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.street_address %></td>
-        <td><%= user.street_address_line_two %></td>
-        <td><%= user.city %></td>
-        <td><%= user.state %></td>
-        <td><%= user.zip_code %></td>
-        <td><%= user.phone_number %></td>
-        <td><%= user.uin %></td>
-        <td><%= user.position %></td>
-        <td><%= user.committee %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.street_address %></td>
+      <td><%= user.street_address_line_two %></td>
+      <td><%= user.city %></td>
+      <td><%= user.state %></td>
+      <td><%= user.zip_code %></td>
+      <td><%= user.phone_number %></td>
+      <td><%= user.uin %></td>
+      <td><%= user.position %></td>
+      <td><%= user.committee %></td>
+      <td><%= user.excusal_date %></td>
+      <% if absences >= 3 %>
+        <td id="absent"><%= absences %></td>
+      <% else %>
+        <td id="present"><%= absences %></td>
+      <% end %>
+      <td><%= link_to 'View Profile and Attendance History', user %></td>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      
+      
     <% end %>
   </tbody>
 </table>
-
+<%= link_to 'Back', 'dashboard#index' %>
 <br>
 
 <%= link_to 'Create New User', new_user_path %>

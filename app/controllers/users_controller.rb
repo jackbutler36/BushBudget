@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def index
     @q = User.ransack(params[:q]) # ransack queries based on parameters passed in by the view form
     @users = @q.result
+    @meetings = Meeting.all
   end
 
   # GET /users/1 or /users/1.json
@@ -60,11 +61,13 @@ class UsersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
+    @meetings = Meeting.all
+    @attendances = Attendance.where(userNum: @user.uin)
   end
 
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:first_name, :last_name, :street_address, :street_address_line_two, :city, :state,
-                                 :zip_code, :phone_number, :uin, :position, :committee, :email, :password, :password_confirmation)
+                                 :zip_code, :phone_number, :uin, :position, :committee, :email, :password, :password_confirmation, :excusal_date)
   end
 end

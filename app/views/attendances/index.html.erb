@@ -23,10 +23,14 @@
       <tr>
         <td><%= meeting.description %></td>
         <td><%= meeting.date %></td>
-        <% if !attended %>
+        <% if !attended && !(current_user.excusal_date > meeting.date) %>
           <td id="absent">NO</td>
-        <% else %>
+        <% end %>
+        <% if attended %>
           <td id="present">YES</td>
+        <% end %>
+        <% if !attended && current_user.excusal_date > meeting.date %>
+          <td id="absent" style="background-color:orange;">EXCUSED</td>
         <% end %>
       </tr>
     <% end %>
@@ -35,6 +39,41 @@
 <%= link_to 'Back', '/' %>
 
 <br>
-<% else %>
-<h2>ToDo: Admin Master attendance view</h2>
+<% end %>
+<% if current_admin %>
+<h1>Members in bad attendance standing</h1>
+<table>
+  <thead>
+      <th>Name</th>
+      <th>Absences</th>
+      <th rowspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+    <% absences = 0 %>
+    <% @meetings.each do |meeting| %>
+      <% attended = false %>
+      <% (Attendance.where(userNum: user.uin)).each do |attendance| %>
+        <% if meeting.password == attendance.password%>
+          <% attended = true %>
+        <% end%>
+        </tr>
+      <% end %>
+      <% if !attended && user.excusal_date < meeting.date %>
+        <% absences = absences + 1 %>
+      <% end %>
+    <% end %>
+    <% if absences >= 3 %>
+      <tr>
+        <td><%= user.first_name + " " + user.last_name %></td>
+        <td><%= absences %></td>
+        <td><%= link_to 'View Profile and Attendance History', user %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back', '/' %>
 <% end %>
