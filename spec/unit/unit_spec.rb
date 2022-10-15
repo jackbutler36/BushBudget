@@ -15,7 +15,8 @@ RSpec.describe User, type: :model do
                         committee: 'R&D',
                         email: 'bushtest@gmail.com',
                         password: 'pass1234',
-                        password_confirmation: 'pass1234')
+                        password_confirmation: 'pass1234',
+                        excusal_date: Date.new(2022,10,1))
   end
 
   it 'is valid with all valid attributes' do
@@ -167,7 +168,8 @@ RSpec.describe Attendance, type: :model do
                         committee: 'R&D',
                         email: 'bushtest@gmail.com',
                         password: 'pass1234',
-                        password_confirmation: 'pass1234')
+                        password_confirmation: 'pass1234',
+                        excusal_date: Date.new(2022,10,1))
 
     Meeting.new(description: 'Meeting about R&D',
                         date: Date.new(2022,12,1),
