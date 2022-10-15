@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :uin
       t.string :position
       t.string :committee
+      t.date :excusal_date
 
       t.timestamps
     end

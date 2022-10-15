@@ -23,10 +23,14 @@
       <tr>
         <td><%= meeting.description %></td>
         <td><%= meeting.date %></td>
-        <% if !attended %>
+        <% if !attended && !(current_user.excusal_date > meeting.date) %>
           <td id="absent">NO</td>
-        <% else %>
+        <% end %>
+        <% if attended %>
           <td id="present">YES</td>
+        <% end %>
+        <% if !attended && current_user.excusal_date > meeting.date %>
+          <td id="absent" style="background-color:orange;">EXCUSED</td>
         <% end %>
       </tr>
     <% end %>
@@ -52,12 +56,12 @@
     <% @meetings.each do |meeting| %>
       <% attended = false %>
       <% (Attendance.where(userNum: user.uin)).each do |attendance| %>
-        <% if meeting.password == attendance.password %>
+        <% if meeting.password == attendance.password%>
           <% attended = true %>
         <% end%>
         </tr>
       <% end %>
-      <% if !attended %>
+      <% if !attended && user.excusal_date < meeting.date %>
         <% absences = absences + 1 %>
       <% end %>
     <% end %>

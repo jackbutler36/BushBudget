@@ -12,7 +12,7 @@
         <% end%>
         </tr>
       <% end %>
-      <% if !attended %>
+      <% if !attended && user.excusal_date < meeting.date %>
         <% absences = absences + 1 %>
       <% end %>
     <% end %>
@@ -28,8 +28,21 @@
 <%= button_to 'Logout', destroy_admin_session_path, data: {turbo: 'false'}, method: :delete %>
 <% else %>
 <% if current_user %>
+<% absences = 0 %>
+<% @meetings.each do |meeting| %>
+  <% attended = false %>
+  <% (Attendance.where(userNum: current_user.uin)).each do |attendance| %>
+    <% if meeting.password == attendance.password %>
+      <% attended = true %>
+    <% end%>
+    </tr>
+  <% end %>
+  <% if !attended && current_user.excusal_date < meeting.date %>
+    <% absences = absences + 1 %>
+  <% end %>
+<% end %>
 <h1>Howdy <%= current_user.first_name %></h1>
-<% if @meetings.length - @user_attendance.length >= 2 %>
+<% if absences >= 2 %>
 <h2 id="warning">WARNING: you have missed <%= @meetings.length - @user_attendance.length%> meetings. View your attendance history for more details</h2>
 <% end %>
 <%= link_to 'Attendance History', 'attendances#index' %>

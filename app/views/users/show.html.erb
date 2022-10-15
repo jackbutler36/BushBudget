@@ -61,6 +61,11 @@
   <%= @user.email %>
 </p>
 
+<p>
+  <strong>Excusal Date:</strong>
+  <%= @user.excusal_date %>
+</p>
+
 <h1>Attendance History</h1>
 <table>
   <thead>
@@ -85,10 +90,14 @@
       <tr>
         <td><%= meeting.description %></td>
         <td><%= meeting.date %></td>
-        <% if !attended %>
+        <% if !attended && !(@user.excusal_date > meeting.date) %>
           <td id="absent">NO</td>
-        <% else %>
+        <% end %>
+        <% if attended %>
           <td id="present">YES</td>
+        <% end %>
+        <% if !attended && @user.excusal_date > meeting.date %>
+          <td id="absent" style="background-color:orange;">EXCUSED</td>
         <% end %>
       </tr>
     <% end %>

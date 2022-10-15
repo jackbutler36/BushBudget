@@ -25,6 +25,7 @@ def generate_users(number_users, position, committee)
     user.email = Faker::Name.first_name + '@tamu.edu'
     user.password = '123456'
     user.password_confirmation =  '123456'
+    user.excusal_date = Date.new(Time.now.year, Time.now.month, Time.now.day)
     user.save!
   end
 end
@@ -45,6 +46,7 @@ def new_user(first, last, uin, email, password)
   user.email = email
   user.password = password
   user.password_confirmation = password
+  user.excusal_date = Date.new(Time.now.year, Time.now.month, Time.now.day)
   user.save!
 end
 
@@ -80,6 +82,7 @@ admin.save!
 new_user('Test', 'User', '111222333', 'bushuser@tamu.edu', '123456')
 new_user('Test', 'User2', '222333444', 'bushuser2@tamu.edu', '234567')
 new_user('Test', 'User3', '333444555', 'bushuser3@tamu.edu', '345678')
+new_user('Test', 'User4', '444555666', 'bushuser4@tamu.edu', '456789')
 
 new_meeting(Date.new(2022, 12, 1), 'R&D scrum', '12345')
 new_meeting(Date.new(2022, 12, 4), 'public relations meeting', '34567')
@@ -98,5 +101,7 @@ new_attendance('222333444', '45678')
 # initializing test user 3 with 3 missing meetings, should have a personal notification and the admin should be notified
 new_attendance('333444555', '12345')
 new_attendance('333444555', '34567')
-
+# initializing test user 4 with 3 missing but excused meetings, should have no notifications if setting excuse date to Date.new(2023, 1, 1)
+new_attendance('444555666', '12345')
+new_attendance('444555666', '34567')
 

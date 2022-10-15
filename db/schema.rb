@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2022_10_08_185519) do
     t.string "uin"
     t.string "position"
     t.string "committee"
+    t.date "excusal_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email", default: "", null: false

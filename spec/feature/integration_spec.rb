@@ -15,6 +15,7 @@ RSpec.describe 'Running integration tests', type: :feature do
     fill_in 'Email', with: 'bushtest@gmail.com'
     fill_in 'Password', with: 'pass1234'
     fill_in 'Password confirmation', with: 'pass1234'
+    fill_in 'Excusal date', with: Date.new(Time.now.year, Time.now.month, Time.now.day)
   end
 
   def set_defaults_meeting
@@ -62,6 +63,7 @@ RSpec.describe 'Running integration tests', type: :feature do
     user.email =  email
     user.password = password
     user.password_confirmation = password
+    user.excusal_date = Date.new(Time.now.year, Time.now.month, Time.now.day)
     user.save!
   end
 
