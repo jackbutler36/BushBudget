@@ -1,0 +1,92 @@
+<%= form_with(model: user) do |form| %>
+    <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  
+        <ul>
+          <% user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :street_address %>
+      <%= form.text_field :street_address %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :street_address_line_two %>
+      <%= form.text_field :street_address_line_two %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :city %>
+      <%= form.text_field :city %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :state %>
+      <%= form.select :state, [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ] %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :zip_code %>
+      <%= form.text_field :zip_code %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :phone_number %>
+      <%= form.text_field :phone_number %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :uin %>
+      <%= form.text_field :uin %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :position %>
+      <%= form.select :position, ['leader', 'member']  %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :email %>
+      <%= form.text_field :email  %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :committee %>
+      <%= form.text_field :committee  %>
+    </div>
+
+    <div class="field">
+      <%= form.label :password %>
+      <%= form.text_field :password  %>
+    </div>
+
+    <div class="field">
+      <%= form.label :password_confirmation %>
+      <%= form.text_field :password_confirmation  %>
+    </div>
+
+    <div class="field">
+      <%= form.label :excusal_date %>
+      <%= form.date_field :excusal_date %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>

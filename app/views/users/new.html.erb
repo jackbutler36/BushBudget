@@ -1,5 +1,8 @@
+<% if current_admin %>
 <h1>New User</h1>
-
-<%= render 'form', user: @user %>
-
+<%= render 'newuserform', user: @user %>
 <%= link_to 'Back', users_path %>
+<% else %>
+<%= button_to 'Login as Admin', new_admin_session_path %>
+<%= button_to 'Login as User', new_user_session_path %>
+<% end %>

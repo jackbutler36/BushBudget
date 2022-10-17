@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+After cloning this repo for development purposes, run(assuming you're on Windows)
 
-Things you may want to cover:
+* docker run --rm -it --volume "${PWD}:/csce431" -e DATABASE_USER=test_app -e DATABASE_PASSWORD=test_password -p 3000:3000 dmartinez05/ruby_rails_postgresql:latest
 
-* Ruby version
+* cd csce431
 
-* System dependencies
+* bundle install
 
-* Configuration
+* rails webpacker:install
 
-* Database creation
+* rails db:create db:migrate db:seed
 
-* Database initialization
+* rails server --binding=0.0.0.0
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To see credentials for Admin testing, see db/seed.rb
