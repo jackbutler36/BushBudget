@@ -43,7 +43,7 @@
 <% end %>
 <h1>Howdy <%= current_user.first_name %></h1>
 <% if absences >= 2 %>
-<h2 id="warning">WARNING: you have missed <%= @meetings.length - @user_attendance.length%> meetings. View your attendance history for more details</h2>
+<h2 id="warning">WARNING: you have missed <%= absences%> meetings. View your attendance history for more details</h2>
 <% end %>
 <%= link_to 'Attendance History', 'attendances#index' %>
 <%= button_to 'Logout', destroy_user_session_path, data: {turbo: 'false'}, method: :delete %>
