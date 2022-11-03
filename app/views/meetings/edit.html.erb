@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<% if current_admin %>
 <style>
 body{
     margin:0 !important;
@@ -64,4 +65,8 @@ body{
             </div>
         </div>
     </body>
+<% else %>
+<%= button_to 'Login as Admin', new_admin_session_path %>
+<%= button_to 'Login as User', new_user_session_path %>
+<% end %>
 </html>
