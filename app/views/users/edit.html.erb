@@ -1,8 +1,69 @@
 <% if current_admin %>
-<h1>Editing User</h1>
-<%= render 'form', user: @user %>
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<style>
+body{
+    margin:0 !important;
+    padding: 5px !important;
+ }
+</style>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" >
+                <img src="/images/logo.jpg" alt="BushSchoolGSGA logo" height="50">
+            </a>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <%= link_to 'Dashboard', admin_session_path, class: 'nav-link' %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to 'Meetings', meetings_path, class: 'nav-link' %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to 'Users', users_path, class: 'nav-link' %>
+                    </li>
+                </ul>
+            </div>
+        
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <%=button_to('Logout', destroy_admin_session_path, data: {turbo: 'false'}, method: :delete, class: "btn btn-outline-success mr-1") %>
+                    
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="mask" >
+            <div class = "d-flex justify-content-center align-items-center h-100">
+                <div class = "text-black">
+                    <h1 class="mb-3">Editing User</h1>
+                </div>
+            </div>
+        </div>
+   
+
+    <div class="mask" >
+        <div class = "d-flex justify-content-center align-items-center h-100">
+            <%= render 'form', user: @user %>
+        </div>
+        <div style="display: flex;">
+            <div style="flex-grow: 1;">
+                <%= link_to 'Show', @user, class: "btn btn-info"%>
+            </div>
+            <div>
+                <%= link_to 'Back', users_path, class: "btn btn-danger"%>
+            </div>
+        </div>
+    </body>
 <% else %>
 <%= button_to 'Login as Admin', new_admin_session_path %>
 <%= button_to 'Login as User', new_user_session_path %>
