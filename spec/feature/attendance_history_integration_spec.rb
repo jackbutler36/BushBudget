@@ -29,9 +29,9 @@ RSpec.describe 'Running user_attendance_history integration tests', type: :featu
         login('test@gmail.com','123456')
         click_on 'Attendance History'
         click_on 'Dashboard'
-        expect(page).to have_content("Howdy Test")
+        expect(page).to have_content('Dashboard')
         visit attendances_path
         click_on 'Back'
-        expect(page).to have_content("Howdy Test")
+        expect(page).to have_content('Dashboard')
     end
 end

@@ -1,53 +1,137 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<% if current_admin %>
+<style>
+  body{
+    margin:0 !important;
+    padding: 5px !important;
+    vertical-align: middle;
+  }
+    table, th, td {
+    border:1px solid black;
+  }
+</style>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
 
-<p>
-  <strong>Description:</strong>
-  <%= @meeting.description %>
-</p>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <a class="navbar-brand" >
+        <img src="/images/logo.jpg" alt="BushSchoolGSGA logo" height="50">
+      </a>
+        
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to 'Dashboard', admin_session_path, class: 'nav-link', id: "dashboard_btn" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Meetings', meetings_path, class: 'nav-link', id: "meeting_btn" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Users', users_path, class: 'nav-link', id: "users_btn" %>
+          </li>
+        </ul>
+      </div>
+    
 
-<p>
-  <strong>Date:</strong>
-  <%= @meeting.date %>
-</p>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%=button_to('Logout', destroy_admin_session_path, data: {turbo: 'false'}, method: :delete, class: "btn btn-outline-success mr-1", id: "logout_btn") %>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-<p>
-  <strong>Password:</strong>
-  <%= @meeting.password %>
-</p>
+    <br></br>
 
-<h1>Attendance</h1>
-<table>
-  <thead>
-      <th>Name</th>
-      <th>Present</th>
-      <th rowspan="2"></th>
-    </tr>
-  </thead>
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <h1 class="mb-3">Meeting Details</h1>
+        </div>
+      </div>
+    </div>
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <table>
+            <tr>
+              <th>Description </th>
+              <th>Date </th>
+              <th>Password </th>
+              
+            </tr>
+            <tr>
+              <td><%= @meeting.description %> </td>
+              <td><%= @meeting.date %> </td>
+              <td><%= @meeting.password %> </td>
+         
 
-  <tbody>
-    <% @users.each do |user| %>
-      <% attended = false %>
-      <% @attendances.each do |attendance| %>
-        <% if user.uin == attendance.userNum %>
-          <% attended = true %>
-        <% end%>
-        </tr>
-      <% end %>
-      <tr>
-        <td><%= user.first_name + " " + user.last_name %></td>
-        <% if !attended && !(user.excusal_date > @meeting.date) %>
-          <td id="absent">NO</td>
-        <% end %>
-        <% if attended %>
-          <td id="present">YES</td>
-        <% end %>
-        <% if !attended && user.excusal_date > @meeting.date %>
-          <td id="absent" style="background-color:orange;">EXCUSED</td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
-<%= link_to 'Back', meetings_path %>
+    <br></br><br></br>
+
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <h1 class="mb-3">Meeting Attendance</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Present</th>
+            </tr>
+
+            <tbody>
+              <% @users.each do |user| %>
+                <% attended = false %>
+                <% @attendances.each do |attendance| %>
+                  <% if user.uin == attendance.userNum %>
+                    <% attended = true %>
+                  <% end%>
+                  </tr>
+                <% end %>
+                <tr>
+                  <td><%= user.first_name + " " + user.last_name %></td>
+                  <% if !attended && !(user.excusal_date > @meeting.date) %>
+                    <td id="absent">NO</td>
+                  <% end %>
+                  <% if attended %>
+                    <td id="present">YES</td>
+                  <% end %>
+                  <% if !attended && user.excusal_date > @meeting.date %>
+                    <td id="absent" style="background-color:orange;">EXCUSED</td>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <br></br>
+
+    <%= link_to 'Edit', edit_meeting_path(@meeting), class: "btn btn-outline-primary" %> |
+    <%= link_to 'Back', meetings_path, class: "btn btn-outline-danger" %>
+
+<% else %>
+<%= button_to 'Login as Admin', new_admin_session_path %>
+<%= button_to 'Login as User', new_user_session_path %>
+<% end %>
+</html>
