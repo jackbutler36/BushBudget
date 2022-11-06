@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 # Example
-RSpec.describe 'Running admin_meeting/edit integration tests', type: :feature do
+RSpec.describe 'Running admin_meeting/show integration tests', type: :feature do
       def login(email, password)
         fill_in 'Email', with: email
         fill_in 'Password', with: password
