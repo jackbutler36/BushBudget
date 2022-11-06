@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/csce431/spec/feature/admin_dashboard_integration_spec.rb": {
+      "/csce431/spec/feature/admin_bad_standing_members_integration_spec.rb": {
         "lines": [
           1,
           null,
@@ -794,6 +794,40 @@
           null
         ]
       },
+      "/csce431/spec/feature/admin_dashboard_integration_spec.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
       "/csce431/spec/feature/integration_spec.rb": {
         "lines": [
           1,
@@ -1371,7 +1405,7 @@
           null,
           null,
           1,
-          9,
+          10,
           null,
           null,
           null,
@@ -1391,12 +1425,12 @@
         "lines": [
           1,
           1,
-          12,
-          12,
-          12,
+          13,
+          13,
+          13,
           3,
           null,
-          9,
+          10,
           null,
           null,
           null
@@ -1409,9 +1443,9 @@
           null,
           null,
           1,
-          7,
-          7,
-          7,
+          8,
+          8,
+          8,
           null,
           null,
           null,
@@ -1640,6 +1674,6 @@
         ]
       }
     },
-    "timestamp": 1667705661
+    "timestamp": 1667707312
   }
 }
