@@ -972,6 +972,40 @@
           null
         ]
       },
+      "/csce431/spec/feature/show_admin_meeting_integration_spec.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
       "/csce431/spec/unit/unit_spec.rb": {
         "lines": [
           1,
@@ -1269,7 +1303,7 @@
           null,
           null,
           1,
-          6,
+          7,
           null,
           null,
           null,
@@ -1289,12 +1323,12 @@
         "lines": [
           1,
           1,
-          9,
-          9,
-          9,
+          10,
+          10,
+          10,
           3,
           null,
-          6,
+          7,
           null,
           null,
           null
@@ -1307,9 +1341,9 @@
           null,
           null,
           1,
-          4,
-          4,
-          4,
+          5,
+          5,
+          5,
           null,
           null,
           null,
@@ -1538,6 +1572,6 @@
         ]
       }
     },
-    "timestamp": 1666150608
+    "timestamp": 1667701119
   }
 }
