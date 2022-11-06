@@ -58,12 +58,14 @@
 
 
 <% if current_user %>
+<div class="mask" >
+  <div class = "d-flex justify-content-center align-items-center h-100">
+      <div class = "text-black">
 <table>
   <thead>
       <th>Description</th>
       <th>Date</th>
       <th>Present</th>
-      <th rowspan="2"></th>
     </tr>
   </thead>
 
@@ -92,7 +94,11 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to 'Back', '/' %>
+</div>
+</div>
+</div>
+
+<%= link_to 'Back', '/', class: "btn btn-outline-danger" %>
 
 <br>
 <% end %>
