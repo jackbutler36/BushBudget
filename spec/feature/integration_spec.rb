@@ -205,4 +205,6 @@ RSpec.describe 'Running integration tests', type: :feature do
     click_on 'View Profile and Attendance History'
     expect(page).to have_content('YES')
   end
+
+  
 end

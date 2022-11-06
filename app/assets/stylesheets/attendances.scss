@@ -5,3 +5,14 @@
 #absent {
     background-color: red;
 }
+
+.navbar-nav .nav-item.active .nav-link{
+    color: black !important;
+    border-bottom: 2px solid black;
+   
+
+}
+.navbar-nav .nav-item.mobile.active .nav-link{
+    color: black;
+    border-bottom: 2px transparent !important;
+}
