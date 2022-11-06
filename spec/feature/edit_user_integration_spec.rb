@@ -16,24 +16,31 @@ RSpec.describe 'Running admin_meeting/edit integration tests', type: :feature do
         admin.save!
         visit new_admin_session_path
         login('tamubushtest@gmail.com', 'bushboys512')
-        meeting = Meeting.new
-        meeting.date = Date.new(2022,12,1)
-        meeting.description = 'testing meeting functionality'
-        meeting.password = 'pass123'
-        meeting.save!
-        visit edit_meeting_path(meeting)
+        user = User.new
+        user.first_name =  'Test'
+        user.last_name =  'User'
+        user.street_address = '711 uni dr'
+        user.street_address_line_two = '1320'
+        user.city = 'College Station'
+        user.state = 'TX'
+        user.zip_code = '77840'
+        user.phone_number = '(222)333-4444'
+        user.uin = '111222333'
+        user.position = 'member'
+        user.committee = 'R&D'
+        user.email =  'test@gmail.com'
+        user.password = 'abcdefg'
+        user.password_confirmation = 'abcdefg'
+        user.excusal_date = Date.new(Time.now.year, Time.now.month, Time.now.day)
+        user.save!
+        visit edit_user_path(user)
         click_on 'Meetings'
         expect(page).to have_content('Meetings')
-        visit edit_meeting_path(meeting)
+        visit edit_user_path(user)
         click_on 'Users'
         expect(page).to have_content('Users')
-        visit edit_meeting_path(meeting)
+        visit edit_user_path(user)
         click_on 'Dashboard'
         expect(page).to have_content('Dashboard')
-        visit edit_meeting_path(meeting)
-        fill_in 'Password', with: 'pass1234'
-        click_on 'Update Meeting'
-        visit meetings_path
-        expect(page).to have_content('pass1234')
       end
 end
