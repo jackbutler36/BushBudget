@@ -21,17 +21,18 @@ RSpec.describe 'Running user dashboards integration tests', type: :feature do
         user.uin = '111222333'
         user.position = 'member'
         user.committee = 'R&D'
-        user.email =  email
-        user.password = password
-        user.password_confirmation = password
+        user.email =  'bushtest@tamu.edu'
+        user.password = '123456'
+        user.password_confirmation = '123456'
         user.excusal_date = Date.new(Time.now.year, Time.now.month, Time.now.day)
         user.save!
+        visit new_user_session_path
         login('bushtest@tamu.edu', '123456')
-        visit users_path
-        click_on 'Dashboard'
+
+        click_on 'user_dashboard_btn'
         expect(page).to have_content('Dashboard')
-        visit new_user_path
-        click_on 'Attendance'
+
+        click_on 'attendance_btn'
         expect(page).to have_content('Attendance')
     end
 end

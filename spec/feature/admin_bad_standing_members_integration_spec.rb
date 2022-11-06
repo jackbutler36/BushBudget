@@ -17,14 +17,14 @@ RSpec.describe 'Running admin bad standing members integration tests', type: :fe
         visit new_admin_session_path
         login('tamubushtest@gmail.com', 'bushboys512')
         
-        visit users_path
-        click_on 'Meetings'
+        
+        click_on 'meeting_btn'
         expect(page).to have_content('Meetings')
-        visit new_user_path
-        click_on 'Users'
-        expect(page).to have_content('Users')
-        visit new_user_path
-        click_on 'Dashboard'
+        visit new_admin_session_path
+        click_on 'users_btn'
+        expect(page).to have_content('First name starts with')
+        visit new_admin_session_path
+        click_on 'dashboard_btn'
         expect(page).to have_content('Dashboard')
       end
 end

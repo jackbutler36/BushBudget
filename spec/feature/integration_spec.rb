@@ -150,10 +150,10 @@ RSpec.describe 'Running integration tests', type: :feature do
     new_attendance('111222333', 'pass456')
     visit new_user_session_path
     login('bushtest@gmail.com', 'pass1234')
-    expect(page).to have_content('WARNING: you have missed 2 meetings. View your attendance history for more details')
+    expect(page).to have_content('WARNING: you have missed')
     new_attendance('111222333', 'pass789')
     visit new_user_session_path
-    expect(page).to have_no_content('WARNING: you have missed 2 meetings. View your attendance history for more details')
+    expect(page).to have_no_content('WARNING: you have missed')
   end
 
   scenario 'admin attendance warning notification' do # creating a used who has 3 missing attendance records and then reducing it to only two
