@@ -5,3 +5,9 @@
 #absent {
     background-color: red;
 }
+
+.navbar-nav .nav-item.active .nav-link{
+    color: black !important;
+    border-bottom: 2px solid black;
+
+}
