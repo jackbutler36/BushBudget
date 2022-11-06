@@ -108,6 +108,46 @@
 
 <% else %>
 <% if current_user %>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" >
+        <img src="/images/logo.jpg" alt="BushSchoolGSGA logo" height="50">
+      </a>
+        
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to 'Dashboard', user_session_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Attendance', 'attendances#index', class: 'nav-link' %>
+          </li>
+        </ul>
+      </div>
+    
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%=button_to('Logout', destroy_admin_session_path, data: {turbo: 'false'}, method: :delete, class: "btn btn-outline-success mr-1") %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <h1 class="mb-3"><%= current_user.first_name %>'s Dashboard</h1>
+        </div>
+      </div>
+    </div>
 <% absences = 0 %>
 <% @meetings.each do |meeting| %>
   <% attended = false %>
@@ -121,12 +161,17 @@
     <% absences = absences + 1 %>
   <% end %>
 <% end %>
-<h1>Howdy <%= current_user.first_name %></h1>
+<br></br>
 <% if absences >= 2 %>
-<h2 id="warning">WARNING: you have missed <%= absences%> meetings. View your attendance history for more details</h2>
+  <div class="mask" >
+    <div class = "d-flex justify-content-center align-items-center h-100">
+      <div class = "text-black">
+        <h2 id="warning">WARNING: you have missed <%= absences%> meetings. View your attendance for more details</h2>
+      </div>
+    </div>
+  </div>
 <% end %>
-<%= link_to 'Attendance History', 'attendances#index' %>
-<%= button_to 'Logout', destroy_user_session_path, data: {turbo: 'false'}, method: :delete %>
+<%= link_to 'Attendance History', 'attendances#index', class: "btn btn-outline-primary" %>
 <% else %>
 <%= button_to 'Login as Admin', new_admin_session_path %>
 <%= button_to 'Login as User', new_user_session_path %>
