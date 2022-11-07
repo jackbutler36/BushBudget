@@ -17,15 +17,15 @@ RSpec.describe 'Running admin dashboard integration tests', type: :feature do
         visit new_admin_session_path
         login('tamubushtest@gmail.com', 'bushboys512')
         
-        click_on 'meeting_btn'
+        click_on 'Meetings'
         expect(page).to have_content('Meeting')
 
         visit new_admin_session_path
-        click_on 'users_btn'
+        click_on 'Users'
         expect(page).to have_content('First name starts with')
 
         visit new_admin_session_path
-        click_on 'dashboard_btn'
+        click_on 'Dashboard'
         expect(page).to have_content('Dashboard')
       end
 end

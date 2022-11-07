@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :meetings
   resources :users 
   resources :dashboard
+  resources :admin_docs
   root 'dashboard#index'
   devise_for :admins, controllers: {
     registrations: 'admins/registrations',
