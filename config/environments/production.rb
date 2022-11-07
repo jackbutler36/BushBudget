@@ -117,4 +117,20 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  config.active_storage.service = :local
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.default_url_options = { :host => ENV['HEROKU_APP_NAME'] + '.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :enable_starttls_auto => true,
+  :address => "smtp.gmail.com",
+  :port => 587,
+  :domain => "gmail.com",
+  :authentication => "plain",
+  :user_name => "tamubushboys@gmail.com",
+  :password => "fmtzmbkqbzhfendi"
+  }
 end
