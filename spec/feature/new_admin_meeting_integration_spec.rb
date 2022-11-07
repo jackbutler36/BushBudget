@@ -20,17 +20,17 @@ RSpec.describe 'Running admin_meeting/new integration tests', type: :feature do
     visit meetings_path
     click_on 'New Meeting'
     expect(page).to have_content('Meeting')
-    click_on 'meeting_btn'
+    click_on 'Meetings'
     expect(page).to have_content('Meeting')
 
     visit meetings_path
     click_on 'New Meeting'
-    click_on 'users_btn'
+    click_on 'Users'
     expect(page).to have_content('First name starts with')
 
     visit meetings_path
     click_on 'New Meeting'
-    click_on 'dashboard_btn'
+    click_on 'Dashboard'
     expect(page).to have_content('Dashboard')
   end
 end
