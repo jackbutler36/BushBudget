@@ -29,10 +29,10 @@ RSpec.describe 'Running user dashboards integration tests', type: :feature do
         visit new_user_session_path
         login('bushtest@tamu.edu', '123456')
 
-        click_on 'user_dashboard_btn'
+        click_on 'Dashboard'
         expect(page).to have_content('Dashboard')
 
-        click_on 'attendance_btn'
+        click_on 'Attendance'
         expect(page).to have_content('Attendance')
     end
 end
