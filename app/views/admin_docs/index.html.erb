@@ -58,25 +58,61 @@
 
     <br></br>
 
-    <h1 class="mb-3">Admin Documentation</h1>
+    <h1 class="mb-3">Admin Documentation Contents</h1>
+    <ul>
+      <li>Part 1: System
+        <ul>
+          <li><a href="#transferring-admin-privs">Transferring Admin Privileges</a></li>
+          <li><a href="#backing-up-database">Backing up Database</a></li>
+        </ul>
+      </li>
+      <li>Part 2: Installation/Set-up
+        <ul>
+        </ul>
+      </li>
+      <li>Part 3: User
+        <ul>
+        </ul>
+      </li>
+      <li>Part 4: References
+        <ul>
+        </ul>
+      </li>
+    </ul>
     <h3 class="mb-3">Part 1: System Documentation</h2>
-    <h3 class="mb-3">Transferring Admin Privileges</h2>
+    <h3 class="mb-3"><a id="transferring-admin-privs">Transferring Admin Privileges</a></h2>
     <p>Step 1: Select the app you want to transfer access to.</p>
-    <img src="/images/pipeline_1.JPG" alt="pipeline photo" height="400"> 
+    <img src="/images/pipeline_1.JPG" alt="pipeline photo" width="900"> 
     <p>Step 2: Click on the 'access' tab at the top of the app interface.</p>
-    <img src="/images/access_tab_1.JPG" alt="access photo" height="200"> 
+    <img src="/images/access_tab_1.JPG" alt="access photo" width="900"> 
     <p>Step 3: Click on the 'add collaborator' button and enter the email of the 
     collaborator you want to add and click 'save changes'. The collaborator should be the account
     you are trying to transfer the Admin privileges to.</p>
-    <img src="/images/add_collab_1.JPG" alt="collab photo" height="300">  
+    <img src="/images/add_collab_1.JPG" alt="collab photo" width="900">  
     <p>step 4: After adding the new collaborator, go to the 'settings' tab at the top of the app interface.</p>
-    <img src="/images/app_top_nav_1.JPG" alt="datastore photo" height="100">   
+    <img src="/images/app_top_nav_1.JPG" alt="datastore photo" width="900">   
     <p>step 5: Scroll down to the 'Transfer Ownership' Section and click on the dropdown
     list of accounts. The account you added as a collaborator should be under the 'collaborator' 
     section of the dropdown. click on them and click on the 'Transfer app...' button.</p>
-    <img src="/images/transfer_ownership_1.JPG" alt="datastore photo" height="400"> 
-    <p>The account you transfer admin privileges to should receive an email to accept the transfer
-    and will have the app in their heroku account.</p>
+    <img src="/images/transfer_ownership_1.JPG" alt="datastore photo" width="900"> 
+    <p>step 6: The account you transfer admin privileges to should receive an email with a link
+    to accept the transfer. They should click 'Accept'.</p>
+    <img src="/images/accept_transfer.JPG" alt="datastore photo" width="900">
+
+
+
+
+    <h3 class="mb-3"><a id="backing-up-database">Backing up Database</a></h2>
+    <p>Step 1: From within the app click on the 'Resources' tab on the top navigation bar.</p>
+    <img src="/images/app_resources.JPG" alt="pipeline photo" width="900">
+    <p>Step 2: on the Resources page there will be a section called 'Add-ons' with the database listed
+    under it. Click on the databases name.</p>
+    <img src="/images/add_ons_pgsql_1.JPG" alt="pipeline photo" width="900">
+    <p>Step 3: You will be taken to the databases page. click on the 'Durability' tab at the top
+    navigation bar</p>
+    <img src="/images/datastores_page_1.JPG" alt="pipeline photo" width="900">
+    <p>Step 4: Click the 'Create manual backup' button to backup the database.</p>
+    <img src="/images/manual_backup_1.JPG" alt="pipeline photo" width="900">
     <br></br>
 <% elsif current_user %>
 <style>
