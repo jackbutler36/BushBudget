@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  devise_for :users 
+  devise_for :users
   resources :attendances
   resources :meetings
-  resources :users 
+  resources :users
   resources :dashboard
   resources :admin_docs
   root 'dashboard#index'
