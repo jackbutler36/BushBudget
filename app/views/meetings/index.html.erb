@@ -80,9 +80,9 @@
                   <td><%= meeting.description %></td>
                   <td><%= meeting.date %></td>
                   <td><%= meeting.password %></td>
-                  <td><%= link_to 'View Attendees', meeting %></td>
+                  <td><%= link_to 'View Attendees', meeting, method: :get %></td>
                   <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-                  <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <td><%= button_to 'Destroy', meeting, method: :delete, class: "btn btn-outline-danger"%></td>
                 </tr>
               <% end %>
             </tbody>
