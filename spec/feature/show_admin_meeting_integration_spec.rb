@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 # Example
@@ -16,27 +18,27 @@ RSpec.describe 'Running admin_meeting/new integration tests', type: :feature do
     admin.save!
     visit new_admin_session_path
     login('tamubushtest@gmail.com', 'bushboys512')
-    
+
     temp_meeting = Meeting.new
     temp_meeting.description = 'R&D scrum'
-    temp_meeting.date = Date.new(2022, 12, 01)
+    temp_meeting.date = Date.new(2022, 12, 0o1)
     temp_meeting.password = '12345'
     temp_meeting.save!
 
     visit meetings_path
     click_on 'View Attendees'
     expect(page).to have_content('Meeting')
-    click_on 'meeting_btn'
+    click_on 'Meetings'
     expect(page).to have_content('Meeting')
 
     visit meetings_path
     click_on 'View Attendees'
-    click_on 'users_btn'
+    click_on 'Users'
     expect(page).to have_content('First name starts with')
 
     visit meetings_path
     click_on 'View Attendees'
-    click_on 'dashboard_btn'
+    click_on 'Dashboard'
     expect(page).to have_content('Dashboard')
   end
 end
