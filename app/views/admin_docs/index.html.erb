@@ -68,6 +68,8 @@
       </li>
       <li>Part 2: Installation/Set-up
         <ul>
+          <li><a href="#seed-heroku-app">Initial Creation of Application</a></li>
+            <li><a href="#continuous-integration">Continuous Integration within Heroku</a></li>
         </ul>
       </li>
       <li>Part 3: User (Features)
@@ -121,6 +123,35 @@
     <img src="/images/datastores_page_1.JPG" alt="pipeline photo" width="900">
     <p>Step 4: Click the 'Create manual backup' button to backup the database.</p>
     <img src="/images/manual_backup_1.JPG" alt="pipeline photo" width="900">
+
+    <br></br>
+
+    <h3 class="mb-3">Part 2: Installation/ Set-up</h3>
+
+    <h3 class="mb-3"><a id="seed-heroku-app">Initial Creation of Application</a></h2>
+    <p>On the first creation of the app, there is one step that is necessary to correctly seed your current database. This should only be done once.</p>
+    <p>Step 1: Once you have selected the app on your dashboard, select the "more" option on the top-right of the screen.</p>
+    <img src="/images/installation_1.png" alt="dashboard photo" width="900"> 
+    <p>Step 2: Select the "Run console" button and enter the following command into the terminal: 'rails db:seed' and click run.</p>
+    <img src="/images/installation_2.png" alt="heroku seed photo" width="900"> 
+    <p>Step 3: Once you run this, exit out of the console and you should be able to log-in and access your app. This is all you have to do to to seed your app!</p>
+    <img src="/images/installation_3.png" alt="heroku terminal photo" width="900">
+
+    <br></br>
+
+    <h3 class="mb-3"><a id="continuous-integration">Continuous Integration within Heroku</a></h2>
+    <p>Step 1: Once you have selected the app on your dashboard, navigate to the "Deploy" tab.</p>
+    <img src="/images/installation_1.png" alt="dashboard photo" width="900">
+    <p>Step 2: Scroll down to the "Automatic deploys" section.</p>
+    <img src="/images/installation_4.png" alt="automatic deploy photo" width="900"> 
+    <p>Step 3: There is an option to "Disable automatic deploys". This prevents your app from being updated when code is being changed on GitHub.</p>
+    <img src="/images/installation_5.png" alt="disable automation photo" width="900">
+    <p>Step 4: When disabled, it looks like the above picture. To re-enable your app to automatically update on changed code, you much first choose a branch to deploy from.</p>
+    <img src="/images/installation_6.png" alt="disable automation photo" width="900">
+    <p>Step 5: We are currently deploying the app from the "documentation" branch, however it will normally be from the "main" branch. Select the "main" branch and click "Enable automatic deploys" to re-enable this feature! </p>
+
+    <br></br>
+
     <h3 class="mb-3">Part 3: User (Features)</h3>
     <h4 class="mb-3"><a id="dash">Admin Dashboard</a></h4>
     <p>The admin dashboard has the navigation bar at the top to route to the users and meetings page. The dashboard itself will show warnings to the admin
@@ -197,7 +228,7 @@
     </div>
   </body>
 </html>
-<%= link_to 'Attendance History', 'attendances#index', class: "btn btn-outline-primary" %>
+
 <% else %>
 <style>
   body{
