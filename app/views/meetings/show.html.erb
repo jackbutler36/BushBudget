@@ -54,88 +54,89 @@
 </div>
 </nav>
 
-    <br></br>
+<p id="notice"><%= notice %></p>
+<br></br>
 
-    <div class="mask" >
-      <div class = "d-flex justify-content-center align-items-center h-100">
-        <div class = "text-black">
-          <h1 class="mb-3">Meeting Details</h1>
-        </div>
-      </div>
+<div class="mask" >
+  <div class = "d-flex justify-content-center align-items-center h-100">
+    <div class = "text-black">
+      <h1 class="mb-3">Meeting Details</h1>
     </div>
-    <div class="mask" >
-      <div class = "d-flex justify-content-center align-items-center h-100">
-        <div class = "text-black">
-          <table>
-            <tr>
-              <th>Description </th>
-              <th>Date </th>
-              <th>Password </th>
-              
-            </tr>
-            <tr>
-              <td><%= @meeting.description %> </td>
-              <td><%= @meeting.date %> </td>
-              <td><%= @meeting.password %> </td>
-         
+  </div>
+</div>
+<div class="mask" >
+  <div class = "d-flex justify-content-center align-items-center h-100">
+    <div class = "text-black">
+      <table>
+        <tr>
+          <th>Description </th>
+          <th>Date </th>
+          <th>Password </th>
+          
+        </tr>
+        <tr>
+          <td><%= @meeting.description %> </td>
+          <td><%= @meeting.date %> </td>
+          <td><%= @meeting.password %> </td>
+      
 
-            </tr>
-          </table>
-        </div>
-      </div>
+        </tr>
+      </table>
     </div>
+  </div>
+</div>
 
-    <br></br><br></br>
+<br></br><br></br>
 
-    <div class="mask" >
-      <div class = "d-flex justify-content-center align-items-center h-100">
-        <div class = "text-black">
-          <h1 class="mb-3">Meeting Attendance</h1>
-        </div>
-      </div>
+<div class="mask" >
+  <div class = "d-flex justify-content-center align-items-center h-100">
+    <div class = "text-black">
+      <h1 class="mb-3">Meeting Attendance</h1>
     </div>
+  </div>
+</div>
 
-    <div class="mask" >
-      <div class = "d-flex justify-content-center align-items-center h-100">
-        <div class = "text-black">
-          <table>
+<div class="mask" >
+  <div class = "d-flex justify-content-center align-items-center h-100">
+    <div class = "text-black">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Present</th>
+        </tr>
+
+        <tbody>
+          <% @users.each do |user| %>
+            <% attended = false %>
+            <% @attendances.each do |attendance| %>
+              <% if user.uin == attendance.userNum %>
+                <% attended = true %>
+              <% end%>
+              </tr>
+            <% end %>
             <tr>
-              <th>Name</th>
-              <th>Present</th>
-            </tr>
-
-            <tbody>
-              <% @users.each do |user| %>
-                <% attended = false %>
-                <% @attendances.each do |attendance| %>
-                  <% if user.uin == attendance.userNum %>
-                    <% attended = true %>
-                  <% end%>
-                  </tr>
-                <% end %>
-                <tr>
-                  <td><%= user.first_name + " " + user.last_name %></td>
-                  <% if !attended && !(user.excusal_date > @meeting.date) %>
-                    <td id="absent">NO</td>
-                  <% end %>
-                  <% if attended %>
-                    <td id="present">YES</td>
-                  <% end %>
-                  <% if !attended && user.excusal_date > @meeting.date %>
-                    <td id="absent" style="background-color:orange;">EXCUSED</td>
-                  <% end %>
-                </tr>
+              <td><%= user.first_name + " " + user.last_name %></td>
+              <% if !attended && !(user.excusal_date > @meeting.date) %>
+                <td id="absent">NO</td>
               <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
+              <% if attended %>
+                <td id="present">YES</td>
+              <% end %>
+              <% if !attended && user.excusal_date > @meeting.date %>
+                <td id="absent" style="background-color:orange;">EXCUSED</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
+  </div>
+</div>
 
-    <br></br>
+<br></br>
 
-    <%= link_to 'Edit', edit_meeting_path(@meeting), class: "btn btn-outline-primary" %> |
-    <%= link_to 'Back', meetings_path, class: "btn btn-outline-danger" %>
+<%= link_to 'Edit', edit_meeting_path(@meeting), class: "btn btn-outline-primary" %> |
+<%= link_to 'Back', meetings_path, class: "btn btn-outline-danger" %>
 
 <% else %>
 <style>
@@ -179,14 +180,14 @@
 </div>
 </nav>
 
-    <div class="mask" >
-      <div class = "d-flex justify-content-center align-items-center h-100">
-        <div class = "text-black">
-          <h1 class="mb-3">Welcome to the Bush School attendance portal! Click on one of the above buttons to sign in.</h1>
-        </div>
-      </div>
+<div class="mask" >
+  <div class = "d-flex justify-content-center align-items-center h-100">
+    <div class = "text-black">
+      <h1 class="mb-3">Welcome to the Bush School attendance portal! Click on one of the above buttons to sign in.</h1>
     </div>
-  </body>
+  </div>
+</div>
+</body>
 </html>
 <% end %>
 </html>

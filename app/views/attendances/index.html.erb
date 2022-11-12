@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 
-<p id="notice"><%= notice %></p>
-
 <style>
   body{
     margin:0 !important;
@@ -51,62 +49,61 @@
       </ul>
     </div>
 </nav>
+<p id="notice"><%= notice %></p>
+<br></br>
 
-    <div class="mask" >
-      <div class = "d-flex justify-content-center align-items-center h-100">
-        <div class = "text-black">
-          <h1 class="mb-3">Attendance History</h1>
-        </div>
-      </div>
-    </div>
-
-    <br></br>
 <div class="mask" >
   <div class = "d-flex justify-content-center align-items-center h-100">
-      <div class = "text-black">
-<table>
-  <thead>
-      <th>Description</th>
-      <th>Date</th>
-      <th>Present</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @meetings.each do |meeting| %>
-      <% attended = false %>
-      <% @user_attendance.each do |attendance| %>
-        <% if meeting.password == attendance.password %>
-          <% attended = true %>
-        <% end%>
-        </tr>
-      <% end %>
-      <tr>
-        <td><%= meeting.description %></td>
-        <td><%= meeting.date %></td>
-        <% if !attended && !(current_user.excusal_date > meeting.date) %>
-          <td id="absent">NO</td>
-        <% end %>
-        <% if attended %>
-          <td id="present">YES</td>
-        <% end %>
-        <% if !attended && current_user.excusal_date > meeting.date %>
-          <td id="absent" style="background-color:orange;">EXCUSED</td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
-</div>
-
-</br>
-<div class = mask>
-  <div class = "d-flex justify-content-center align-items-center h-100 padding: 100px">
-    <%= link_to 'Back', '/', class: "btn btn-outline-danger" %>
+    <div class = "text-black">
+      <h1 class="mb-3">Attendance History</h1>
+    </div>
   </div>
 </div>
-<br>
+
+<br></br>
+<div class="mask" >
+  <div class = "d-flex justify-content-center align-items-center h-100">
+    <div class = "text-black">
+      <table>
+        <thead>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Present</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @meetings.each do |meeting| %>
+            <% attended = false %>
+            <% @user_attendance.each do |attendance| %>
+              <% if meeting.password == attendance.password %>
+                <% attended = true %>
+              <% end%>
+              </tr>
+            <% end %>
+            <tr>
+              <td><%= meeting.description %></td>
+              <td><%= meeting.date %></td>
+              <% if !attended && !(current_user.excusal_date > meeting.date) %>
+                <td id="absent">NO</td>
+              <% end %>
+              <% if attended %>
+                <td id="present">YES</td>
+              <% end %>
+              <% if !attended && current_user.excusal_date > meeting.date %>
+                <td id="absent" style="background-color:orange;">EXCUSED</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br></br>
+
+<%= link_to 'Back', '/', class: "btn btn-outline-danger" %>
+
 <% elsif current_admin %>
   <head>
     <meta charset="UTF-8">

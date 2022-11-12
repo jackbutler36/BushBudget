@@ -50,28 +50,27 @@ body{
 </div>
 </nav>
 
-        <div class="mask" >
-            <div class = "d-flex justify-content-center align-items-center h-100">
-                <div class = "text-black">
-                    <h1 class="mb-3">Editing Meeting</h1>
-                </div>
-            </div>
-        </div>
-   
+<p id="notice"><%= notice %></p>
+<br></br>
 
-    <div class="mask" >
-        <div class = "d-flex justify-content-center align-items-center h-100">
-            <%= render 'form', meeting: @meeting %>
-        </div>
-        <div style="display: flex;">
-            <div style="flex-grow: 1;">
-                <%= link_to 'Show', @meeting, class: "btn btn-info"%>
-            </div>
-            <div>
-                <%= link_to 'Back', meetings_path, class: "btn btn-danger"%>
-            </div>
+<div class="mask" >
+    <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+            <h1 class="mb-3">Editing Meeting</h1>
         </div>
     </div>
+</div>
+   
+
+<div class="mask" >
+  <div class = "d-flex justify-content-center align-items-center h-100">
+      <%= render 'form', meeting: @meeting %>
+  </div>
+</div>
+
+          <%= link_to 'Show', @meeting, class: "btn btn-outline-primary"%> |
+          <%= link_to 'Back', meetings_path, class: "btn btn-outline-danger"%>
+
 </body>
 <% else %>
 <style>

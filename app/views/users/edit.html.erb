@@ -25,52 +25,52 @@ body{
 </button>
 
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-<ul class="navbar-nav">
-  <li class="nav-item mobile active">
-    <%= link_to 'Dashboard', admin_session_path, class: 'nav-link' %>
-  </li>
-  <li class="nav-item mobile active">
-    <%= link_to 'Meetings', meetings_path, class: 'nav-link' %>
-  </li>
-  <li class="nav-item mobile active">
-    <%= link_to 'Users', users_path, class: 'nav-link' %>
-  </li>
-  <li class="nav-item mobile active">
-    <%= link_to 'Admin Documentation', admin_docs_path, class: 'nav-link' %>
-  </li>
-</ul>
-</div>
-<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
   <ul class="navbar-nav">
-    <li class="nav-item">
-      <%=button_to('Logout', destroy_user_session_path, data: {turbo: 'false'}, method: :delete, class: "btn btn-outline-success mr-1") %>
+    <li class="nav-item mobile active">
+      <%= link_to 'Dashboard', admin_session_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item mobile active">
+      <%= link_to 'Meetings', meetings_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item mobile active">
+      <%= link_to 'Users', users_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item mobile active">
+      <%= link_to 'Admin Documentation', admin_docs_path, class: 'nav-link' %>
     </li>
   </ul>
-</div>
+  </div>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <%=button_to('Logout', destroy_user_session_path, data: {turbo: 'false'}, method: :delete, class: "btn btn-outline-success mr-1") %>
+      </li>
+    </ul>
+  </div>
 </nav>
 
-        <div class="mask" >
-            <div class = "d-flex justify-content-center align-items-center h-100">
-                <div class = "text-black">
-                    <h1 class="mb-3">Editing User</h1>
-                </div>
-            </div>
-        </div>
-   
+<p id="notice"><%= notice %></p>
+<br></br>
 
-    <div class="mask" >
-        <div class = "d-flex justify-content-center align-items-center h-100">
-            <%= render 'form', user: @user %>
+<div class="mask" >
+    <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+            <h1 class="mb-3">Editing User</h1>
         </div>
-        <div style="display: flex;">
-            <div style="flex-grow: 1;">
-                <%= link_to 'Show', @user, class: "btn btn-info"%>
-            </div>
-            <div>
-                <%= link_to 'Back', users_path, class: "btn btn-danger"%>
-            </div>
-        </div>
-    </body>
+    </div>
+</div>
+
+
+<div class="mask" >
+    <div class = "d-flex justify-content-center align-items-center h-100">
+        <%= render 'form', user: @user %>
+    </div>
+</div>
+<br></br>
+<%= link_to 'Show', @user, class: "btn btn-outline-primary" %> |
+<%= link_to 'Back', users_path, class: "btn btn-outline-danger" %>
+</body>
+<br></br><br></br>
 <% else %>
 <style>
   body{

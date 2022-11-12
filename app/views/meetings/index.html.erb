@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<p id="notice"><%= notice %></p>
+
 <style>
   body{
     margin:0 !important;
@@ -54,66 +54,58 @@
   </ul>
 </div>
 </nav>
-    <div class="mask" >
-      <div class = "d-flex justify-content-center align-items-center h-100">
-        <div class = "text-black">
-          <h1 style="padding: 10px">Meetings</h1>
-          </div>
-      </div>
-    </div>
-    <div class="mask" >
-      <div class = "d-flex justify-content-center align-items-center h-100">
-        <div class = "text-black">
-          <table>
-            <thead>
-              <tr>
-                <th>Description</th>
-                <th>Date</th>
-                <th>Password</th>
-                <th colspan="3"></th>
-              </tr>
-            </thead>
+<p id="notice"><%= notice %></p>
+<br></br>
 
-            <tbody>
-              <% @meetings.each do |meeting| %>
-                <tr>
-                  <td><%= meeting.description %></td>
-                  <td><%= meeting.date %></td>
-                  <td><%= meeting.password %></td>
-                  <td><%= link_to 'View Attendees', meeting, method: :get %></td>
-                  <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-                  <td><%= button_to 'Destroy', meeting, method: :delete, class: "btn btn-outline-danger"%></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
+<div class="mask" >
+  <div class = "d-flex justify-content-center align-items-center h-100">
+    <div class = "text-black">
+      <h1 style="padding: 10px">Meetings</h1>
       </div>
+  </div>
+</div>
+<div class="mask" >
+  <div class = "d-flex justify-content-center align-items-center h-100">
+    <div class = "text-black">
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Password</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-    <br></br>
-    <div class="mask" >
-        <div style="display: flex;">
-            <div style="flex-grow: 1;">
-                <%= link_to 'New Meeting', new_meeting_path, class: "btn btn-outline-info"%>
-            </div>
-            <div>
-                <%= link_to 'Back', 'dashboard#index', class: "btn btn-outline-danger"%>
-            </div>
-        </div>
+        <tbody>
+          <% @meetings.each do |meeting| %>
+            <tr>
+              <td><%= meeting.description %></td>
+              <td><%= meeting.date %></td>
+              <td><%= meeting.password %></td>
+              <td><%= link_to 'View Attendees', meeting, method: :get %></td>
+              <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+              <td><%= button_to 'Destroy', meeting, method: :delete, class: "btn btn-outline-danger"%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-  
-    
-    
-    
-    
-    <% else %>
-    <style>
+  </div>
+</div>
+
+<br></br>
+<%= link_to 'New Meeting', new_meeting_path, class: "btn btn-outline-primary"%>
+<br></br>
+
+<% else %>
+<style>
   body{
     margin:0 !important;
     padding: 5px !important;
     vertical-align: middle;
   }
-    table, th, td {
+  table, th, td {
     border:1px solid black;
   }
 </style>
@@ -148,14 +140,14 @@
 </div>
 </nav>
 
-    <div class="mask" >
-      <div class = "d-flex justify-content-center align-items-center h-100">
-        <div class = "text-black">
-          <h1 class="mb-3">Welcome to the Bush School attendance portal! Click on one of the above buttons to sign in.</h1>
-        </div>
-      </div>
+<div class="mask" >
+  <div class = "d-flex justify-content-center align-items-center h-100">
+    <div class = "text-black">
+      <h1 class="mb-3">Welcome to the Bush School attendance portal! Click on one of the above buttons to sign in.</h1>
     </div>
-  </body>
+  </div>
+</div>
+</body>
 </html>
     <% end %>
   </body>
