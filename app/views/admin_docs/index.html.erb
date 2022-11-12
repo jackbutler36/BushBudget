@@ -70,8 +70,11 @@
         <ul>
         </ul>
       </li>
-      <li>Part 3: User
+      <li>Part 3: User (Features)
         <ul>
+          <li><a href="#dash">Admin Dashboard </a></li>
+          <li><a href="#users">Viewing Users and their Attendance History</a></li>
+          <li><a href="#meetings">Meetings: creation/destruction, and viewing participants</a></li>
         </ul>
       </li>
       <li>Part 4: References
@@ -118,6 +121,30 @@
     <img src="/images/datastores_page_1.JPG" alt="pipeline photo" width="900">
     <p>Step 4: Click the 'Create manual backup' button to backup the database.</p>
     <img src="/images/manual_backup_1.JPG" alt="pipeline photo" width="900">
+    <h3 class="mb-3">Part 3: User (Features)</h3>
+    <h4 class="mb-3"><a id="dash">Admin Dashboard</a></h4>
+    <p>The admin dashboard has the navigation bar at the top to route to the users and meetings page. The dashboard itself will show warnings to the admin
+    if users miss 3 or more meetings.</p>
+    <img src="/images/dashboard.png" alt="dash photo" width="900">
+    <p>Upon clicking to learn more, all the users having missed 3+ meetings are displayed to the authorized admin. </p>
+    <img src="/images/bad_standing.png" alt="bad standing" width="900">
+    <h4 class="mb-3"><a id="users">Viewing Users and their Attendance History</a></h4>
+    <p>The users in the system can be searched through from clicking users in the navigation bar. Their information is displayed, and able to be queried, and their attendance history is highlighted.</p>
+    <img src="/images/query.png" alt="search user" width="900">
+    <p>Each individual user can be shown, and each can also be edited by the admin in case he wants to excuse any absences, or change their information in the system. The edit page can be reached by clicking the 'Edit' button, from the page shown above, or from the 'View Profile and Attendance History' link. </p>
+    <img src="/images/edit_user.png" alt="edit user" width="900">
+    <p>Details about each user can be seen by clicking on 'View Profile and Attendance History' from the user table. </p>
+    <img src="/images/user_det.png" alt="edit user" width="900">
+    <br></br>
+    <h4 class="mb-3"><a id="meetings">Meetings: creation/destruction, and viewing participants</a></h4>
+    <p>The meetings page can be reached from the navigation bar by clicking meetings. The index page displays all meetings currently in the system, and their information. </p>
+    <img src="/images/meet.png" alt="Meetings index" width="900">
+    <p>From here the admin can destroy, create, edit, and view the attendees of any particular meeting by clicking the appropriate link. To create a meeting, click the blue 'New Meeting' button.</p>
+    <img src="/images/meet_create.png" alt="Meetings create" width="900">
+    <p>Click on "Edit" from the Meetings table to edit a particular meeting.</p>
+    <img src="/images/meet_edit.png" alt="Meetings edit" width="900">
+    <p>Lastly, to view the attendees of a particular meeting, the admin can click on 'View Attendees' from the meetings table. This data can also be found by going through a user, and seeing what meetings he/she has attended.</p>
+    <img src="/images/meet_attend.png" alt="edit user" width="900">
     <br></br>
 <% elsif current_user %>
 <style>
