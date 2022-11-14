@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -64,11 +66,11 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'brakeman'
-gem 'rubocop'
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-gem 'faker'
-gem 'ransack'
 gem 'devise'
+gem 'faker'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'ransack'
+gem 'rubocop'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

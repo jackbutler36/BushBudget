@@ -1,53 +1,197 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<% if current_admin %>
+<style>
+  body{
+    margin:0 !important;
+    padding: 5px !important;
+    vertical-align: middle;
+  }
+    table, th, td {
+    border:1px solid black;
+  }
+</style>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<p>
-  <strong>Description:</strong>
-  <%= @meeting.description %>
-</p>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+</head>
 
-<p>
-  <strong>Date:</strong>
-  <%= @meeting.date %>
-</p>
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<a class="navbar-brand" >
+  <img src="/images/logo.jpg" alt="BushSchoolGSGA logo" height="50">
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
 
-<p>
-  <strong>Password:</strong>
-  <%= @meeting.password %>
-</p>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav">
+  <li class="nav-item ">
+    <%= link_to 'Dashboard', admin_session_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item ">
+    <%= link_to 'Meetings', meetings_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Users', users_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item ">
+    <%= link_to 'Admin Documentation', admin_docs_path, class: 'nav-link' %>
+  </li>
+</ul>
+</div>
+<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <%=button_to('Logout', destroy_user_session_path, data: {turbo: 'false'}, method: :delete, class: "btn btn-outline-success mr-1") %>
+    </li>
+  </ul>
+</div>
+</nav>
 
-<h1>Attendance</h1>
-<table>
-  <thead>
-      <th>Name</th>
-      <th>Present</th>
-      <th rowspan="2"></th>
-    </tr>
-  </thead>
+    <br></br>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <% attended = false %>
-      <% @attendances.each do |attendance| %>
-        <% if user.uin == attendance.userNum %>
-          <% attended = true %>
-        <% end%>
-        </tr>
-      <% end %>
-      <tr>
-        <td><%= user.first_name + " " + user.last_name %></td>
-        <% if !attended && !(user.excusal_date > @meeting.date) %>
-          <td id="absent">NO</td>
-        <% end %>
-        <% if attended %>
-          <td id="present">YES</td>
-        <% end %>
-        <% if !attended && user.excusal_date > @meeting.date %>
-          <td id="absent" style="background-color:orange;">EXCUSED</td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <h1 class="mb-3">Meeting Details</h1>
+        </div>
+      </div>
+    </div>
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <table>
+            <tr>
+              <th>Description </th>
+              <th>Date </th>
+              <th>Password </th>
+              
+            </tr>
+            <tr>
+              <td><%= @meeting.description %> </td>
+              <td><%= @meeting.date %> </td>
+              <td><%= @meeting.password %> </td>
+         
 
-<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
-<%= link_to 'Back', meetings_path %>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <br></br><br></br>
+
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <h1 class="mb-3">Meeting Attendance</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Present</th>
+            </tr>
+
+            <tbody>
+              <% @users.each do |user| %>
+                <% attended = false %>
+                <% @attendances.each do |attendance| %>
+                  <% if user.uin == attendance.userNum %>
+                    <% attended = true %>
+                  <% end%>
+                  </tr>
+                <% end %>
+                <tr>
+                  <td><%= user.first_name + " " + user.last_name %></td>
+                  <% if !attended && !(user.excusal_date > @meeting.date) %>
+                    <td id="absent">NO</td>
+                  <% end %>
+                  <% if attended %>
+                    <td id="present">YES</td>
+                  <% end %>
+                  <% if !attended && user.excusal_date > @meeting.date %>
+                    <td id="absent" style="background-color:orange;">EXCUSED</td>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <br></br>
+    <div style="mask">
+    <div style="display: flex;">
+      <div style="flex-grow: 1;">
+        <%= link_to 'Edit', edit_meeting_path(@meeting), class: "btn btn-outline-primary" %> 
+      </div>
+        <%= link_to 'Back', meetings_path, class: "btn btn-outline-danger" %>
+       </div>
+       </div> 
+
+<% else %>
+<style>
+  body{
+    margin:0 !important;
+    padding: 5px !important;
+    vertical-align: middle;
+  }
+    table, th, td {
+    border:1px solid black;
+  }
+</style>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+</head>
+
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<a class="navbar-brand" >
+  <img src="/images/logo.jpg" alt="BushSchoolGSGA logo" height="50">
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav">
+  <li class="nav-item mobile active">
+    <%= link_to 'Login as Admin', new_admin_session_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item mobile active">
+    <%= link_to 'Login as User', new_user_session_path, class: 'nav-link' %>
+  </li>
+</ul>
+</div>
+</nav>
+
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <h1 class="mb-3">Welcome to the Bush School attendance portal! Click on one of the above buttons to sign in.</h1>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<% end %>
+</html>

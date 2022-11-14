@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<p id="notice"><%= notice %></p>
+<% if current_admin %>
+
+<style>
+  body{
+    margin:0 !important;
+    padding: 5px !important;
+    vertical-align: middle;
+  }
+    table, th, td {
+    border:1px solid black;
+  }
+</style>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+</head>
+
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<a class="navbar-brand" >
+  <img src="/images/logo.jpg" alt="BushSchoolGSGA logo" height="50">
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav">
+  <li class="nav-item">
+    <%= link_to 'Dashboard', admin_session_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item ">
+    <%= link_to 'Meetings', meetings_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Users', users_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item mobile active">
+    <%= link_to 'Admin Documentation', admin_docs_path, class: 'nav-link' %>
+  </li>
+</ul>
+</div>
+<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <%=button_to('Logout', destroy_admin_session_path, data: {turbo: 'false'}, method: :delete, class: "btn btn-outline-success mr-1") %>
+    </li>
+  </ul>
+</div>
+</nav>
+
+    <br></br>
+
+    <h1 class="mb-3">Admin Documentation Contents</h1>
+    <ul>
+      <li>Part 1: System
+        <ul>
+          <li><a href="#transferring-admin-privs">Transferring Admin Privileges</a></li>
+          <li><a href="#backing-up-database">Backing up Database</a></li>
+        </ul>
+      </li>
+      <li>Part 2: Installation/Set-up
+        <ul>
+          <li><a href="#seed-heroku-app">Initial Creation of Application</a></li>
+            <li><a href="#continuous-integration">Continuous Integration within Heroku</a></li>
+        </ul>
+      </li>
+      <li>Part 3: User (Features)
+        <ul>
+          <li><a href="#dash">Admin Dashboard </a></li>
+          <li><a href="#users">Viewing Users and their Attendance History</a></li>
+          <li><a href="#meetings">Meetings: creation/destruction, and viewing participants</a></li>
+        </ul>
+      </li>
+      <li>Part 4: References
+        <ul>
+        </ul>
+      </li>
+    </ul>
+    <h3 class="mb-3">Part 1: System Documentation</h2>
+    <h3 class="mb-3"><a id="transferring-admin-privs">Transferring Admin Privileges</a></h2>
+    <p>Transferring admin privileges allows another heroku user to become the owner of the pipeline,
+    such as if a new person takes over the deploying of the app. Below are the instructions on how to 
+    conduct this:</p>
+    <p>Step 1: Select the app you want to transfer access to.</p>
+    <img src="/images/pipeline_1.JPG" alt="pipeline photo" width="900"> 
+    <p>Step 2: Click on the 'access' tab at the top of the app interface.</p>
+    <img src="/images/access_tab_1.JPG" alt="access photo" width="900"> 
+    <p>Step 3: Click on the 'add collaborator' button and enter the email of the 
+    collaborator you want to add and click 'save changes'. The collaborator should be the account
+    you are trying to transfer the Admin privileges to.</p>
+    <img src="/images/add_collab_1.JPG" alt="collab photo" width="900">  
+    <p>step 4: After adding the new collaborator, go to the 'settings' tab at the top of the app interface.</p>
+    <img src="/images/app_top_nav_1.JPG" alt="datastore photo" width="900">   
+    <p>step 5: Scroll down to the 'Transfer Ownership' Section and click on the dropdown
+    list of accounts. The account you added as a collaborator should be under the 'collaborator' 
+    section of the dropdown. click on them and click on the 'Transfer app...' button.</p>
+    <img src="/images/transfer_ownership_1.JPG" alt="datastore photo" width="900"> 
+    <p>step 6: The account you transfer admin privileges to should receive an email with a link
+    to accept the transfer. They should click 'Accept'.</p>
+    <img src="/images/accept_transfer.JPG" alt="datastore photo" width="900">
+
+
+
+
+    <h3 class="mb-3"><a id="backing-up-database">Backing up Database</a></h2>
+    <p>Backing up the heroku database will stop a loss of data in the case herokus infrastructure crashes
+    or fails. Below are the instructions on how to back up the database:</p>
+    <p>Step 1: From within the app click on the 'Resources' tab on the top navigation bar.</p>
+    <img src="/images/app_resources.JPG" alt="pipeline photo" width="900">
+    <p>Step 2: on the Resources page there will be a section called 'Add-ons' with the database listed
+    under it. Click on the databases name.</p>
+    <img src="/images/add_ons_pgsql_1.JPG" alt="pipeline photo" width="900">
+    <p>Step 3: You will be taken to the databases page. click on the 'Durability' tab at the top
+    navigation bar</p>
+    <img src="/images/datastores_page_1.JPG" alt="pipeline photo" width="900">
+    <p>Step 4: Click the 'Create manual backup' button to backup the database.</p>
+    <img src="/images/manual_backup_1.JPG" alt="pipeline photo" width="900">
+
+    <br></br>
+
+    <h3 class="mb-3">Part 2: Installation/ Set-up</h3>
+
+    <h3 class="mb-3"><a id="seed-heroku-app">Initial Creation of Application</a></h2>
+    <p>On the first creation of the app, there is one step that is necessary to correctly seed your current database. This should only be done once.</p>
+    <p>Step 1: Once you have selected the app on your dashboard, select the "more" option on the top-right of the screen.</p>
+    <img src="/images/installation_1.png" alt="dashboard photo" width="900"> 
+    <p>Step 2: Select the "Run console" button and enter the following command into the terminal: 'rails db:seed' and click run.</p>
+    <img src="/images/installation_2.png" alt="heroku seed photo" width="900"> 
+    <p>Step 3: Once you run this, exit out of the console and you should be able to log-in and access your app. This is all you have to do to to seed your app!</p>
+    <img src="/images/installation_3.png" alt="heroku terminal photo" width="900">
+
+    <br></br>
+
+    <h3 class="mb-3"><a id="continuous-integration">Continuous Integration within Heroku</a></h2>
+    <p>Step 1: Once you have selected the app on your dashboard, navigate to the "Deploy" tab.</p>
+    <img src="/images/installation_1.png" alt="dashboard photo" width="900">
+    <p>Step 2: Scroll down to the "Automatic deploys" section.</p>
+    <img src="/images/installation_4.png" alt="automatic deploy photo" width="900"> 
+    <p>Step 3: There is an option to "Disable automatic deploys". This prevents your app from being updated when code is being changed on GitHub.</p>
+    <img src="/images/installation_5.png" alt="disable automation photo" width="900">
+    <p>Step 4: When disabled, it looks like the above picture. To re-enable your app to automatically update on changed code, you much first choose a branch to deploy from.</p>
+    <img src="/images/installation_6.png" alt="disable automation photo" width="900">
+    <p>Step 5: We are currently deploying the app from the "documentation" branch, however it will normally be from the "main" branch. Select the "main" branch and click "Enable automatic deploys" to re-enable this feature! </p>
+
+    <br></br>
+
+    <h3 class="mb-3">Part 3: User (Features)</h3>
+    <h4 class="mb-3"><a id="dash">Admin Dashboard</a></h4>
+    <p>The admin dashboard has the navigation bar at the top to route to the users and meetings page. The dashboard itself will show warnings to the admin
+    if users miss 3 or more meetings.</p>
+    <img src="/images/dashboard.png" alt="dash photo" width="900">
+    <p>Upon clicking to learn more, all the users having missed 3+ meetings are displayed to the authorized admin. </p>
+    <img src="/images/bad_standing.png" alt="bad standing" width="900">
+    <h4 class="mb-3"><a id="users">Viewing Users and their Attendance History</a></h4>
+    <p>The users in the system can be searched through from clicking users in the navigation bar. Their information is displayed, and able to be queried, and their attendance history is highlighted.</p>
+    <img src="/images/query.png" alt="search user" width="900">
+    <p>Each individual user can be shown, and each can also be edited by the admin in case he wants to excuse any absences, or change their information in the system. The edit page can be reached by clicking the 'Edit' button, from the page shown above, or from the 'View Profile and Attendance History' link. </p>
+    <img src="/images/edit_user.png" alt="edit user" width="900">
+    <p>Details about each user can be seen by clicking on 'View Profile and Attendance History' from the user table. </p>
+    <img src="/images/user_det.png" alt="edit user" width="900">
+    <br></br>
+    <h4 class="mb-3"><a id="meetings">Meetings: creation/destruction, and viewing participants</a></h4>
+    <p>The meetings page can be reached from the navigation bar by clicking meetings. The index page displays all meetings currently in the system, and their information. </p>
+    <img src="/images/meet.png" alt="Meetings index" width="900">
+    <p>From here the admin can destroy, create, edit, and view the attendees of any particular meeting by clicking the appropriate link. To create a meeting, click the blue 'New Meeting' button.</p>
+    <img src="/images/meet_create.png" alt="Meetings create" width="900">
+    <p>Click on "Edit" from the Meetings table to edit a particular meeting.</p>
+    <img src="/images/meet_edit.png" alt="Meetings edit" width="900">
+    <p>Lastly, to view the attendees of a particular meeting, the admin can click on 'View Attendees' from the meetings table. This data can also be found by going through a user, and seeing what meetings he/she has attended.</p>
+    <img src="/images/meet_attend.png" alt="edit user" width="900">
+    <br></br>
+<% elsif current_user %>
+<style>
+  body{
+    margin:0 !important;
+    padding: 5px !important;
+    vertical-align: middle;
+  }
+    table, th, td {
+    border:1px solid black;
+  }
+</style>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+</head>
+
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<a class="navbar-brand" >
+  <img src="/images/logo.jpg" alt="BushSchoolGSGA logo" height="50">
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav">
+<li class="nav-item">
+<%= link_to 'Dashboard', user_session_path, class: 'nav-link' %>
+</li>
+<li class="nav-item mobile active">
+<%= link_to 'Attendance', 'attendances#index', class: 'nav-link' %>
+</li>
+</ul>
+</div>
+</nav>
+
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <h1 class="mb-3">You aren't authorized for this view. return to the User Dashboard or log out.</h1>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<% else %>
+<style>
+  body{
+    margin:0 !important;
+    padding: 5px !important;
+    vertical-align: middle;
+  }
+    table, th, td {
+    border:1px solid black;
+  }
+</style>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+</head>
+
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<a class="navbar-brand" >
+  <img src="/images/logo.jpg" alt="BushSchoolGSGA logo" height="50">
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav">
+  <li class="nav-item mobile active">
+    <%= link_to 'Login as Admin', new_admin_session_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item mobile active">
+    <%= link_to 'Login as User', new_user_session_path, class: 'nav-link' %>
+  </li>
+</ul>
+</div>
+</nav>
+
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <h1 class="mb-3">Welcome to the Bush School attendance portal! Click on one of the above buttons to sign in.</h1>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<% end %>

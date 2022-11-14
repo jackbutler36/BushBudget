@@ -1,37 +1,163 @@
+<!DOCTYPE html>
 <p id="notice"><%= notice %></p>
+<style>
+  body{
+    margin:0 !important;
+    padding: 5px !important;
+  }
+    table, th, td {
+    border:1px solid black;
+  }
+</style>
+
 <% if current_admin %>
-<h1>Meetings</h1>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Date</th>
-      <th>Password</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+</head>
 
-  <tbody>
-    <% @meetings.each do |meeting| %>
-      <tr>
-        <td><%= meeting.description %></td>
-        <td><%= meeting.date %></td>
-        <td><%= meeting.password %></td>
-        <td><%= link_to 'View Attendees', meeting %></td>
-        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<a class="navbar-brand" >
+  <img src="/images/logo.jpg" alt="BushSchoolGSGA logo" height="50">
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav">
+  <li class="nav-item ">
+    <%= link_to 'Dashboard', admin_session_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item mobile active">
+    <%= link_to 'Meetings', meetings_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item ">
+    <%= link_to 'Users', users_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item ">
+    <%= link_to 'Admin Documentation', admin_docs_path, class: 'nav-link' %>
+  </li>
+</ul>
+</div>
+<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <%=button_to('Logout', destroy_user_session_path, data: {turbo: 'false'}, method: :delete, class: "btn btn-outline-success mr-1") %>
+    </li>
+  </ul>
+</div>
+</nav>
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <h1 style="padding: 10px">Meetings</h1>
+          </div>
+      </div>
+    </div>
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <table>
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Password</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @meetings.each do |meeting| %>
+                <tr>
+                  <td><%= meeting.description %></td>
+                  <td><%= meeting.date %></td>
+                  <td><%= meeting.password %></td>
+                  <td><%= link_to 'View Attendees', meeting, method: :get %></td>
+                  <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+                  <td><%= button_to 'Destroy', meeting, method: :delete, class: "btn btn-outline-danger"%></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    <br></br>
+    <div class="mask" >
+        <div style="display: flex;">
+            <div style="flex-grow: 1;">
+                <%= link_to 'New Meeting', new_meeting_path, class: "btn btn-outline-info"%>
+            </div>
+            <div>
+                <%= link_to 'Back', 'dashboard#index', class: "btn btn-outline-danger"%>
+            </div>
+        </div>
+    </div>
+  
+    
+    
+    
+    
+    <% else %>
+    <style>
+  body{
+    margin:0 !important;
+    padding: 5px !important;
+    vertical-align: middle;
+  }
+    table, th, td {
+    border:1px solid black;
+  }
+</style>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+</head>
+
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<a class="navbar-brand" >
+  <img src="/images/logo.jpg" alt="BushSchoolGSGA logo" height="50">
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav">
+  <li class="nav-item mobile active">
+    <%= link_to 'Login as Admin', new_admin_session_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item mobile active">
+    <%= link_to 'Login as User', new_user_session_path, class: 'nav-link' %>
+  </li>
+</ul>
+</div>
+</nav>
+
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <h1 class="mb-3">Welcome to the Bush School attendance portal! Click on one of the above buttons to sign in.</h1>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
     <% end %>
-  </tbody>
-</table>
-<%= link_to 'Back', 'dashboard#index' %>
-<br>
-
-<%= link_to 'New Meeting', new_meeting_path %>
-<%= button_to 'Logout', destroy_admin_session_path, data: {turbo: 'false'}, method: :delete %>
-<% else %>
-<%= button_to 'Login as Admin', new_admin_session_path %>
-<%= button_to 'Login as User', new_user_session_path %>
-<% end %>
+  </body>
+</html>
 

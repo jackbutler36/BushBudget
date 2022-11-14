@@ -1,13 +1,74 @@
+<!DOCTYPE html>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Attendance History</h1>
+<style>
+  body{
+    margin:0 !important;
+    padding: 5px !important;
+    vertical-align: middle;
+  }
+    table, th, td {
+    border:1px solid black;
+  }
+</style>
+
 <% if current_user %>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+  </head>
+
+  <body>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <a class="navbar-brand" >
+      <img src="/images/logo.jpg" alt="BushSchoolGSGA logo" height="50">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <%= link_to 'Dashboard', user_session_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item  mobile active">
+        <%= link_to 'Attendance', 'attendances#index', class: 'nav-link' %>
+      </li>
+    </ul>
+    </div>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%=button_to('Logout', destroy_user_session_path, data: {turbo: 'false'}, method: :delete, class: "btn btn-outline-success mr-1") %>
+        </li>
+      </ul>
+    </div>
+</nav>
+
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <h1 class="mb-3">Attendance History</h1>
+        </div>
+      </div>
+    </div>
+
+    <br></br>
+<div class="mask" >
+  <div class = "d-flex justify-content-center align-items-center h-100">
+      <div class = "text-black">
 <table>
   <thead>
       <th>Description</th>
       <th>Date</th>
       <th>Present</th>
-      <th rowspan="2"></th>
     </tr>
   </thead>
 
@@ -36,12 +97,68 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to 'Back', '/' %>
+</div>
+</div>
 
+</br>
+<div class = mask>
+  <div class = "d-flex justify-content-center align-items-center h-100 padding: 100px">
+    <%= link_to 'Back', '/', class: "btn btn-outline-danger" %>
+  </div>
+</div>
 <br>
-<% end %>
-<% if current_admin %>
-<h1>Members in bad attendance standing</h1>
+<% elsif current_admin %>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <a class="navbar-brand" >
+        <img src="/images/logo.jpg" alt="BushSchoolGSGA logo" height="50">
+      </a>
+        
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to 'Dashboard', admin_session_path, class: 'nav-link', id: "dashboard_btn" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Meetings', meetings_path, class: 'nav-link', id: "meeting_btn" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Users', users_path, class: 'nav-link', id: "users_btn" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Admin Documentation', admin_docs_path, class: 'nav-link' %>
+          </li>
+        </ul>
+      </div>
+    
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%=button_to('Logout', destroy_admin_session_path, data: {turbo: 'false'}, method: :delete, class: "btn btn-outline-success mr-1", id: "logout_btn") %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <br></br>
+<div class="mask" >
+  <div class = "d-flex justify-content-center align-items-center h-100">
+    <div class = "text-black">
+      <h1>Members in bad attendance standing</h1>
+    </div>
+  </div>
+</div>
+<br></br>
+<div class="mask" >
+  <div class = "d-flex justify-content-center align-items-center h-100">
+      <div class = "text-black">
 <table>
   <thead>
       <th>Name</th>
@@ -75,5 +192,55 @@
   <% end %>
   </tbody>
 </table>
-<%= link_to 'Back', '/' %>
+</div>
+</div>
+</div>
+<br>
+<div class="mask" >
+  <div class = "d-flex justify-content-center align-items-center h-100">
+<%= link_to 'Back', '/', class: "btn btn-outline-danger" %>
+    </div>
+  </div>
+<% else %>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+</head>
+
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<a class="navbar-brand" >
+  <img src="/images/logo.jpg" alt="BushSchoolGSGA logo" height="50">
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav">
+  <li class="nav-item mobile active">
+    <%= link_to 'Login as Admin', new_admin_session_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item mobile active">
+    <%= link_to 'Login as User', new_user_session_path, class: 'nav-link' %>
+  </li>
+</ul>
+</div>
+</nav>
+
+    <div class="mask" >
+      <div class = "d-flex justify-content-center align-items-center h-100">
+        <div class = "text-black">
+          <h1 class="mb-3">Welcome to the Bush School attendance portal! Click on one of the above buttons to sign in.</h1>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
 <% end %>
