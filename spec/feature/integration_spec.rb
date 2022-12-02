@@ -23,13 +23,13 @@ RSpec.describe 'Running integration tests', type: :feature do
 
   def set_defaults_meeting
     fill_in 'Description', with: 'Meeting about R&D'
-    fill_in 'Date', with: Date.new(2022, 12, 1)
+    fill_in 'Date', with: Date.new(2032, 12, 1)
     fill_in 'Password', with: 'goodpassword'
   end
 
   def new_meeting(_date, password)
     meeting = Meeting.new
-    meeting.date = Date.new(2022, 12, 1)
+    meeting.date = Date.new(2032, 12, 1)
     meeting.description = 'testing meeting functionality'
     meeting.password = password
     meeting.save!
@@ -121,7 +121,7 @@ RSpec.describe 'Running integration tests', type: :feature do
     visit meetings_path
 
     expect(page).to have_content('Meeting about R&D')
-    expect(page).to have_content(Date.new(2022, 12, 1))
+    expect(page).to have_content(Date.new(2032, 12, 1))
     expect(page).to have_content('goodpassword')
   end
 
@@ -134,8 +134,8 @@ RSpec.describe 'Running integration tests', type: :feature do
 
   scenario 'attendance with valid credentials' do
     new_user('bushtest@gmail.com', 'pass1234')
-    new_meeting(Date.new(2022, 12, 1), 'pass456')
-    new_meeting(Date.new(2022, 12, 4), 'pass789')
+    new_meeting(Date.new(2032, 12, 1), 'pass456')
+    new_meeting(Date.new(2032, 12, 4), 'pass789')
     visit new_attendance_path
     fill_in 'attendance[userNum]', with: '111222333'
     fill_in 'Password', with: 'pass1234'
@@ -143,15 +143,15 @@ RSpec.describe 'Running integration tests', type: :feature do
     visit new_user_session_path
     login('bushtest@gmail.com', 'pass1234')
     click_on 'Attendance History'
-    expect(page).to have_content(Date.new(2022, 12, 1))
-    expect(page).to have_no_content(Date.new(2022, 12, 4))
+    expect(page).to have_content(Date.new(2032, 12, 1))
+    expect(page).to have_no_content(Date.new(2032, 12, 4))
   end
 
   scenario 'user attendance warning notification' do # creating a used who has 2 missing attendance records and then reducing it to only one
     new_user('bushtest@gmail.com', 'pass1234')
-    new_meeting(Date.new(2022, 12, 1), 'pass456')
-    new_meeting(Date.new(2022, 12, 4), 'pass789')
-    new_meeting(Date.new(2022, 12, 7), 'pass012')
+    new_meeting(Date.new(2032, 12, 1), 'pass456')
+    new_meeting(Date.new(2032, 12, 4), 'pass789')
+    new_meeting(Date.new(2032, 12, 7), 'pass012')
     new_attendance('111222333', 'pass456')
     visit new_user_session_path
     login('bushtest@gmail.com', 'pass1234')
@@ -164,9 +164,9 @@ RSpec.describe 'Running integration tests', type: :feature do
   scenario 'admin attendance warning notification' do # creating a used who has 3 missing attendance records and then reducing it to only two
     new_admin('tamubushtest@gmail.com', 'bushboys512')
     new_user('bushtest@gmail.com', 'pass1234')
-    new_meeting(Date.new(2022, 12, 1), 'pass456')
-    new_meeting(Date.new(2022, 12, 4), 'pass789')
-    new_meeting(Date.new(2022, 12, 7), 'pass012')
+    new_meeting(Date.new(2032, 12, 1), 'pass456')
+    new_meeting(Date.new(2032, 12, 4), 'pass789')
+    new_meeting(Date.new(2032, 12, 7), 'pass012')
     # new_attendance('111222333', 'pass456')
     visit new_admin_session_path
     login('tamubushtest@gmail.com', 'bushboys512')
@@ -182,7 +182,7 @@ RSpec.describe 'Running integration tests', type: :feature do
     new_user('bushtest2@gmail.com', 'pass12345')
     new_user('bushtest3@gmail.com', 'pass12346')
     new_user('bushtest4@gmail.com', 'pass12347')
-    new_meeting(Date.new(2022, 12, 1), 'pass456')
+    new_meeting(Date.new(2032, 12, 1), 'pass456')
     # new_attendance('111222333', 'pass456')
     visit new_admin_session_path
     login('tamubushtest@gmail.com', 'bushboys512')
@@ -198,7 +198,7 @@ RSpec.describe 'Running integration tests', type: :feature do
   scenario 'admin viewing attendance of new user' do # creating a new user and expecting no attendances yet
     new_admin('tamubushtest@gmail.com', 'bushboys512')
     new_user('bushtest@gmail.com', 'pass1234')
-    new_meeting(Date.new(2022, 12, 1), 'pass456')
+    new_meeting(Date.new(2032, 12, 1), 'pass456')
     # new_attendance('111222333', 'pass456')
     visit new_admin_session_path
     login('tamubushtest@gmail.com', 'bushboys512')
