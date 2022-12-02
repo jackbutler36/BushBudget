@@ -21,7 +21,7 @@ RSpec.describe 'Running admin_meeting/new integration tests', type: :feature do
 
     temp_meeting = Meeting.new
     temp_meeting.description = 'R&D scrum'
-    temp_meeting.date = Date.new(2032, 12, 0)
+    temp_meeting.date = Date.new(2032, 12, 1)
     temp_meeting.password = '12345'
     temp_meeting.save!
 
