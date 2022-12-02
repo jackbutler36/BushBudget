@@ -30,6 +30,7 @@ RSpec.describe 'Running integration tests', type: :feature do
   def new_meeting(_date, password)
     meeting = Meeting.new
     meeting.date = Date.new(2032, 12, 1)
+    print meeting.date
     meeting.description = 'testing meeting functionality'
     meeting.password = password
     meeting.save!
