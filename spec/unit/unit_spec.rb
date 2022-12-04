@@ -124,7 +124,7 @@ end
 RSpec.describe Meeting, type: :model do
   subject do
     described_class.new(description: 'Meeting about R&D',
-                        date: Date.new(2022, 12, 1),
+                        date: Date.new(2032, 12, 1),
                         password: 'goodpassword')
   end
 
@@ -172,7 +172,7 @@ RSpec.describe Attendance, type: :model do
              excusal_date: Date.new(2022, 10, 1))
 
     Meeting.new(description: 'Meeting about R&D',
-                date: Date.new(2022, 12, 1),
+                date: Date.new(2032, 12, 1),
                 password: 'goodpassword')
 
     described_class.new(userNum: '123456789',
