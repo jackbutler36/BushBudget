@@ -21,6 +21,8 @@ This code has been run and tested on:
 * Ruby - 3.0.2
 * Rails - 6.1.4
 * Ruby Gems - Listed in `Gemfile`
+* Docker Engine - 20.10.14 
+* Docker container - 1.41 
 * PostgreSQL - 13.3
 * Yarn - 1.22.11
 
