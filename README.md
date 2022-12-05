@@ -134,4 +134,4 @@ There are many ways to implement continous deployment. In the case of Heroku a c
 ## Support ##
 
 Admins looking for support should first look at the 'Admin Documentation' page.
-Users looking for help seek out assistance from the customer.
+Users looking for help seek out assistance from the administrator.
