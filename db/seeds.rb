@@ -86,6 +86,11 @@ admin.email = 'pack1996@tamu.edu'
 admin.password = 'pass1234'
 admin.password_confirmation = 'pass1234'
 admin.save!
+admin = Admin.new
+admin.email = 'mupton@tamu.edu'
+admin.password = 'password'
+admin.password_confirmation = 'password'
+admin.save!
 
 new_user('Test', 'User', '111222333', 'bushuser@tamu.edu', '123456')
 new_user('Test', 'User2', '222333444', 'bushuser2@tamu.edu', '234567')
